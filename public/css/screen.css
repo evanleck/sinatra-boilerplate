@@ -902,10 +902,45 @@ footer, header {
   overflow-x: hidden;
 }
 
-/* line 34, ../sass/partials/_base.scss */
+/* line 35, ../sass/partials/_base.scss */
+header h1 {
+  font-weight: bold;
+  letter-spacing: -1px;
+  margin: 0.8em 0;
+}
+
+/* line 42, ../sass/partials/_base.scss */
 .container {
   width: 950px;
   margin: 0 auto;
   overflow: hidden;
   *zoom: 1;
+}
+
+/* line 46, ../sass/partials/_base.scss */
+#main {
+  display: inline;
+  float: left;
+  margin-right: 10px;
+  width: 590px;
+  padding-right: 24px;
+  margin-right: 25px;
+  border-right: 1px solid #dddddd;
+}
+/* line 147, ../../../../.rvm/gems/ruby-1.9.2-p180/gems/compass-0.11.5/frameworks/blueprint/stylesheets/blueprint/_grid.scss */
+* html #main {
+  overflow-x: hidden;
+}
+
+/* line 52, ../sass/partials/_base.scss */
+#sidebar {
+  display: inline;
+  float: left;
+  margin-right: 0;
+  width: 310px;
+  color: #777;
+}
+/* line 147, ../../../../.rvm/gems/ruby-1.9.2-p180/gems/compass-0.11.5/frameworks/blueprint/stylesheets/blueprint/_grid.scss */
+* html #sidebar {
+  overflow-x: hidden;
 }

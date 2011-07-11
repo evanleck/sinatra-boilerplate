@@ -31,10 +31,26 @@ footer, header {
   @include column($blueprint-grid-columns, true);
 }
 
+header {
+  h1 {
+    font-weight: bold;
+    letter-spacing: -1px;
+    margin: 0.8em 0;
+  }
+}
+
 .container {
   @include container;
 }
 
 #main {
+  @include column($blueprint-grid-columns / 3 * 2 - 1);
+  @include colborder;
   // = goodies go here :)
+}
+
+#sidebar {
+  @include column($blueprint-grid-columns / 3, true);
+  
+  color: #777;
 }
