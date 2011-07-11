@@ -18,8 +18,8 @@ end
 # to the end of this call
 use Rack::Session::Pool,        # session via pool that sets a cookie reference
 	:expire_after => 1800,        # 30 minutes
-	:key => 'rack.session',         # cookie name
-	:secret => '374J2977311JQR87Jd3c9UKr3b8DGU',
+	:key => 'rack.session',       # cookie name (probably change this)
+	:secret => '374J2977311JQR87Jd3c9UKr3b8DGU', # probably change this too
 	:httponly => true,
 	:secure => false,             # change for more secur cookies
 	:path => '/'
