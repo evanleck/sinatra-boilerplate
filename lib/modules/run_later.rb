@@ -103,4 +103,4 @@ module RunLater
   end
 end
 
-Sinatra::Base.send(:include, RunLater::InstanceMethods) 
+Sinatra::Base.send(:include, RunLater::InstanceMethods)
