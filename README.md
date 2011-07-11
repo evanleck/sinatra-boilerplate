@@ -8,9 +8,13 @@ sinatra-boilerplate uses *some* of the utter uber-hawtness that is the [HTML5 Bo
 
 The base layout file is pretty compliant with what the Boilerplate puts out but I've added in `Modernizr.load` instead of putting all the JS at the bottom and a few other minor tweaks. Most of the comments have been left in place though.
 
+## Modernizr
+
+[Modernizr](http://www.modernizr.com/) is fantastic and I threw it in because... well, it's fantastic! I also use `Modernizr.load` a ton and recommend you checkout [yepnope.js](http://yepnopejs.com/) for more documentation on it.
+
 ## Compass
 
-Because CSS sucks.
+Because CSS sucks and SASS + Compass doesn't.
 
 ## Extra Hawt Sauce
 
@@ -30,4 +34,4 @@ I've added a bunch of modules and helper functions that I use all the time to th
 
 ## Acknowledgements
 
-All the stuff used here is either open source or donation ware. This little starter package wouldn't be possible without the awesome work these guys have done and their generosity in sharing their code with the rest of us.
+All the stuff used here is either open source or donation ware and totally the work of the people who made it, not me. I just put the pieces together and bundled it up all pretty-like. This little starter package wouldn't be possible without the awesome work these guys have done and their generosity in sharing their code with the rest of us.

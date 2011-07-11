@@ -17,18 +17,23 @@
 
     <!-- Place favicon.ico and apple-touch-icon.png in the root directory: mathiasbynens.be/notes/touch-icons -->
 
-    <!-- CSS: implied media="all" -->
     <%= slt "/css/screen.css" %>
 
     <!-- More ideas for your <head> here: h5bp.com/docs/#head-Tips -->
     <!-- 
       Modernizr enables HTML5 elements & feature detects;
-      For optimal performance, use a custom Modernizr build: www.modernizr.com/download/ 
+      For optimal performance, use a custom Modernizr build: www.modernizr.com/download/
+      For Modernizr.load to work, check the box for it on the build page
     -->
-    <%= jit "/modernizr.js" %>
+    <!-- for more on Modernizr.load, check out http://yepnopejs.com/, that's what it is -->
+    <%= jit "/js/modernizr.js" %>
     <script type="text/javascript" charset="utf-8">
       Modernizr.load({
-        load: ['//ajax.googleapis.com/ajax/libs/jquery/1.6.2/jquery.min.js', '/js/app.js']
+        test: true,
+        load: ['//ajax.googleapis.com/ajax/libs/jquery/1.6.2/jquery.min.js', '/js/app.js'],
+        complete: function(){
+          log('Modernizr finished loading our scripts!');
+        }
       });
     </script>
   </head>
