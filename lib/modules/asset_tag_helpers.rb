@@ -21,6 +21,6 @@ module Sinatra
   
   # comment this out if you don't want these methods included
   # or want to include them on your own
-  helpers AssetTageHelpers
+  helpers AssetTagHelpers
 end
 

@@ -9,6 +9,8 @@ $blueprint-grid-margin: 10px;
 // Or you can set $blueprint-grid-width to a fixed value and unset $blueprint-container-size -- it will be calculated for you.
 $blueprint-grid-width: ($blueprint-container-size + $blueprint-grid-margin) / $blueprint-grid-columns - $blueprint-grid-margin;
 
+// Import all the default blueprint modules so that we can access their mixins.
+@import "blueprint";
 
 body {
   @include blueprint-typography(true);
@@ -23,11 +25,13 @@ body {
 
 form { @include blueprint-form; }
 
+@import "boilerplate"; // might be some collisions with Blueprint, but who cares :)
+
 footer, header {
   @include column($blueprint-grid-columns, true);
 }
 
-#container {
+.container {
   @include container;
 }
 

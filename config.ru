@@ -16,6 +16,13 @@ end
 # if problems come up with people being logged out, add:
 #   :renew => true
 # to the end of this call
+use Rack::Session::Pool,        # session via pool that sets a cookie reference
+	:expire_after => 1800,        # 30 minutes
+	:key => 'rack.session',         # cookie name
+	:secret => '374J2977311JQR87Jd3c9UKr3b8DGU',
+	:httponly => true,
+	:secure => false,             # change for more secur cookies
+	:path => '/'
 
 use Rack::Flash                 # provides flash[:notice] and flash[:error] support
 use Rack::Static,               # trying to catch these for static files

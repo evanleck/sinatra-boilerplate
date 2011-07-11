@@ -4,5 +4,7 @@ Dir.glob('./lib/**/*.rb') do |file|
 end
 
 get '/' do
+  @title = 'Hey there!'
+  
   erb :index
 end
