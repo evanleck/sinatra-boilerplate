@@ -2,13 +2,15 @@
 <p><%= link_to 'Go home', '/' %></p>
 
 <h2>Form Tag Helpers</h2>
-<p>
-  <b><code>input_for</code></b><br>
-  <%= input_for 'input' %><br>
-  <%= link_to 'See this filled with "here is some input"', '/?input=here is some input' %>
-</p>
-<p>
-  <b><code>select_for</code></b><br>
-  <%= select_for 'select', { 'Nothing' => :zero, 'One' => :one, 'The second' => :two } %><br>
-  <%= link_to 'See the second option selected', '/?select=one' %>
-</p>
+<form action='/'>
+  <p>
+    <b><code>input_for</code></b><br>
+    <%= input_for 'input' %><br>
+    <%= link_to 'See this filled with "here is some input"', '/?input=here is some input' %>
+  </p>
+  <p>
+    <b><code>select_for</code></b><br>
+    <%= select_for 'select', { 'Nothing' => :zero, 'One' => :one, 'The second' => :two } %><br>
+    <%= link_to 'See the second option selected', '/?select=one' %>
+  </p>
+</form>
