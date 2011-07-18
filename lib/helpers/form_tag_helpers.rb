@@ -117,7 +117,7 @@ module Sinatra
     def select_for param, options, attributes = {}
       options_text = ''
       options.each do |key, val|
-        options_text += option_for(param, :key => key, :value => val)
+        options_text += option_for(param, :key => key, :value => val, :default => attributes[:default])
       end
       
       "<select #{ attributes.to_attr } name='#{ param }' id='#{ param }' size='1'>
