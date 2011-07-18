@@ -1,93 +1,128 @@
-
 # ================
 # = Form Helpers =
 # ================
 module Sinatra
   module FormTagHelpers
-    def input_for param, args = {}
-    	args = {
+    
+    # input_for creates an <input> tag with a number of configurable options
+    #   if `param` is set in the `params` hash, the values from the `params` hash will be populated in the tag.
+    #
+    #   <%= input_for 'something_hidden', :type => 'hidden', :value => 'Shhhhhh' %>
+    # 
+    # Yields:
+    # 
+    #   <input type='hidden' name='something_hidden' id='something_hidden' value='Shhhhhh'>
+    # 
+    def input_for param, attributes = {}
+    	attributes = {
     		:type => 'text',
     		:value => h(params[param.to_sym]) || '',
     		:name => param,
-    		:id => args[:id] || param
-    	}.merge(args)
+    		:id => attributes[:id] || param
+    	}.merge(attributes)
 
-      "<input #{ args.to_attr }>"
+      "<input #{ attributes.to_attr }>"
     end
-
-    def radio_for param, args = {}
-      args = {
+    
+    # radio_for creates an input tag of type radio and marks it `checked` if the param argument is set to the same value in the `params` hash
+    def radio_for param, attributes = {}
+      attributes = {
         :type => 'radio'
-      }.merge(args)
+      }.merge(attributes)
   
-      if params[param.to_sym].to_s == args[:value].to_s
-        args.merge!({ :checked => nil })
+      if params[param.to_sym].to_s == attributes[:value].to_s
+        attributes.merge!({ :checked => nil })
       end
   
-      input_for param, args
+      input_for param, attributes
     end
-
-    def checkbox_for param, checked_if, args = {}
-      args = {
+    
+    # checkbox_for creates an input of type checkbox with a `checked_if` argument to determine if it should be checked
+    # 
+    #   <%= checkbox_for 'is_cool', User.is_cool? %>
+    # 
+    # Yields:
+    #
+    #   <input type='checkbox' name='is_cool' id='is_cool' value='true'>
+    # 
+    # Which will be marked with `checked` if `User.is_cool?` evaluates to true
+    # 
+    def checkbox_for param, checked_if, attributes = {}
+      attributes = {
         :type => 'checkbox',
         :value => 'true'
-      }.merge(args)
+      }.merge(attributes)
   
       if checked_if || params[param.to_sym] == 'true'
-        args.merge!({ :checked => nil })
+        attributes.merge!({ :checked => nil })
       end
   
-      input_for param, args
+      input_for param, attributes
     end
-
-    def textarea_for param, args = {}
-      args = {
+    
+    # creates a simple <textarea> tag
+    def textarea_for param, attributes = {}
+      attributes = {
         :name => param,
-        :id => args[:id] || param
-      }.merge(args)
+        :id => attributes[:id] || param
+      }.merge(attributes)
   
-      "<textarea #{ args.to_attr }>#{ h(params[param.to_sym]) || '' }</textarea>"
+      "<textarea #{ attributes.to_attr }>#{ h(params[param.to_sym]) || '' }</textarea>"
     end
-
-    def option_for param, args = {}
-  
+    
+    
+    # option_for creates an <option> element with the specified attributes
+    #   if the param specified is set to the value of this option tag then it is marked as 'selected'
+    #   designed to be used within a <select> element
+    #
+    #   <%= option_for 'turtles', :key => 'I love them', :value => 'love' %>
+    # 
+    # Yields:
+    # 
+    #   <option value='love'>I love them</option>
+    #
+    # If params[:turtle] is set to 'love' this yields:
+    #
+    #   <option value='love' selected>I love them</option>
+    # 
+    def option_for param, attributes = {}
       if params[param.to_sym]
-        default = params[param.to_sym].to_s
-      elsif args[:default]
-        default = args[:default].to_s
+        default = params[param].to_s
+      elsif attributes[:default]
+        default = attributes[:default].to_s
       else
         default = ''
       end
   
-      text = args.delete(:key)
-      args.delete(:default)
+      text = attributes.delete(:key)
+      attributes.delete(:default)
+      attributes.merge!({ :selected => nil }) if default == attributes[:value].to_s
   
-      if default == args[:value].to_s
-        args.merge!({ :selected => nil })
-      end
-  
-      "<option #{ args.to_attr }>#{ text }</option>"
+      "<option #{ attributes.to_attr }>#{ text }</option>"
     end
-
-    def select_for param, options, attrib = {}
-      # CHANGED: default value can be passed as :default => 'me!'
-      opts = ''
-  
-      if params[param.to_sym]
-        p = params[param.to_sym].to_s
-      elsif attrib[:default]
-        p = attrib[:default].to_s
-      else
-        p = ''
-      end
-  
-      attrib.delete(:reverse) # don't want this getting turned into an attribute
-  
+    
+    
+    # select_for creates a <select> element with the specified attributes
+    #   options are the available <option> tags within the <select> box
+    #
+    #   <%= select_for 'days', { :monday => 'Monday', :myday => 'MY DAY!' } %>
+    # 
+    # Yields:
+    # 
+    #   <select name='days' id='days' size='1'>
+    #     <option value='monday'>Monday</option>
+    #     <option value='myday'>MY DAY!</option>
+    #   </select>
+    #
+    def select_for param, options, attributes = {}
+      options_text = ''
       options.each do |key, val|
-        opts << "<option #{ p == val.to_s ? 'selected' : '' } value='#{ val }'>#{ key }</option>"
+        options_text += option_for(param, :key => key, :value => val)
       end
-  
-      "<select #{ attrib.to_attr } name='#{ param }' id='#{ param }' size='1'>#{ opts }</select>"
+      
+      "<select #{ attributes.to_attr } name='#{ param }' id='#{ param }' size='1'>
+        #{ options_text }
+      </select>"
     end
   end
   

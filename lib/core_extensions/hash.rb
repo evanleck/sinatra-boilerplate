@@ -15,9 +15,9 @@ class Hash
   end
   
 	# converts a Hash into an HTML attribute where the key is the attribute and the value is the value.
-	#		{ :id => 'two', :class => 'me' }.to_attr
+	#		{ :id => 'two', :class => 'me', :required => nil }.to_attr
 	#	yields
-	#		id="two" class="me"
+	#		id="two" class="me" required
 	#
 	#	Really handy for generating markup
   def to_attr
