@@ -24,6 +24,13 @@ helpers do
   end
   
   # link helper
+  # 
+  #   <%= link_to 'click here to get awesome hawtness', '/hawtness' %>
+  # 
+  # with HTML attributes:
+  # 
+  #   <%= link_to 'Home', '/', :class => 'home-link', :title => 'Click here to go home', :data => { :to => '#home' } %>
+  #
   def link_to text, link, args = {}
   	if link == request.path_info
   		args[:class] = "#{ args[:class] } current"
@@ -33,7 +40,11 @@ helpers do
   end
   
   # Returns the url of the referer along with the params posted to that page
-  # Lets you hand back invalid params for correction in the previous page.
+  #   Lets you hand back invalid params for correction in the previous page.
+  #   You can also add extra params in to send back.
+  #
+  #   redirect to(back_with_params(:my_extra_param => 'my extra value'))
+  #
   def back_with_params o = {}
     rejected_keys = [:password] # these won't be passed back to the page
     back_to = request.referer ? request.referer : '/'
