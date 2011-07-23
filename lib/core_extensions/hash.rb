@@ -2,11 +2,11 @@ class Hash
 	# converts a Hash to a key value pair for use in a querystring (qs is short for querystring)
 	#   Also, it uses Rack::Utils to escape the strings
 	#
-	#		{ :id => 22, :me => 'you whore bag' }.to_qs
+	#		{ :id => 22, :me => 'you sucka!' }.to_qs
 	#
 	# yields
 	#
-	#		id=22&me=you+whore+bag
+	#		id=22&me=you+sucka%21
 	#
   def to_qs
     collect do |key, value|

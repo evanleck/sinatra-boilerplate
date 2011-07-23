@@ -11,7 +11,7 @@ get '/' do
   #   output to console
   run_later do
     sleep 3 # go ahead and wait
-    puts "\n# ================================== #\nLengthy process has finished!\n# ================================== #\n\n" # outputs to the log AFTER the page has rendered because run_later doesn't block the rest of the process
+    puts "\nLengthy process has finished!\n\n" # outputs to the log AFTER the page has rendered because run_later doesn't block the rest of the process
   end
   
   erb :index
