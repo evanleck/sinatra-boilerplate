@@ -14,8 +14,9 @@ module Sinatra
     #   <input type='hidden' name='something_hidden' id='something_hidden' value='Shhhhhh'>
     # 
     def input_for param, attributes = {}
+      # default values when not specified.
     	attributes = {
-    		:type => 'text',
+    		:type => 'text', # can be any HTML input type ('email', 'submit', 'password', etc.)
     		:value => h(params[param.to_sym]) || '',
     		:name => param,
     		:id => attributes[:id] || param
@@ -62,6 +63,7 @@ module Sinatra
     
     # creates a simple <textarea> tag
     def textarea_for param, attributes = {}
+      # default values to include
       attributes = {
         :name => param,
         :id => attributes[:id] || param
@@ -89,16 +91,14 @@ module Sinatra
       if params[param.to_sym]
         default = params[param].to_s
       elsif attributes[:default]
-        default = attributes[:default].to_s
+        default = attributes.delete(:default).to_s
       else
         default = ''
       end
-  
-      text = attributes.delete(:key)
-      attributes.delete(:default)
+      
       attributes.merge!({ :selected => nil }) if default == attributes[:value].to_s
   
-      "<option #{ attributes.to_attr }>#{ text }</option>"
+      "<option #{ attributes.to_attr }>#{ attributes.delete(:key) }</option>"
     end
     
     
@@ -115,13 +115,8 @@ module Sinatra
     #   </select>
     #
     def select_for param, options, attributes = {}
-      options_text = ''
-      options.each do |key, val|
-        options_text += option_for(param, :key => key, :value => val, :default => attributes[:default])
-      end
-      
       "<select #{ attributes.to_attr } name='#{ param }' id='#{ param }' size='1'>
-        #{ options_text }
+        #{ options.collect { |key, val| option_for(param, :key => key, :value => val, :default => attributes[:default]) }.join(' ').chomp }
       </select>"
     end
   end
