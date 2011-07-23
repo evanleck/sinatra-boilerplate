@@ -16,7 +16,7 @@ module Sinatra
     # image with src
     def image_tag path, o = {}
       "<img src='#{ path }?v=#{ ASSET_VERSION }' #{ o.to_attr }>"
-    end  
+    end
   end
   
   # comment this out if you don't want these methods included

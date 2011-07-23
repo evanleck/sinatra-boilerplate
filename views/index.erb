@@ -7,6 +7,7 @@
     <b><code>input_for</code></b><br>
     <%= input_for 'input' %><br>
     <%= link_to 'See this filled with "here is some input"', '/?input=here is some input' %>
+		<%= '<br>notice how the value gets set to the value of <code>params[:input]</code> :)' if params[:input] %>
   </p>
   <p>
     <b><code>select_for</code></b><br>
