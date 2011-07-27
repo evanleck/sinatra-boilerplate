@@ -106,6 +106,18 @@ I've added a bunch of modules and helper functions that I use all the time to th
   * a better `erb` method so you don't have to do crap like `erb :"folder/file"` anymore
 
 
+## How to Use It
+
+You like it? **Awesome!** Here's how to use it:
+
+1. Clone this project: `git clone git://github.com/l3ck/sinatra-boilerplate.git sinatra-boilerplate`
+2. `CD` into the clone: `cd sinatra-boilerplate`
+3. Export a clean version: `git checkout-index --prefix=git-export-dir/ -a`
+4. Copy the newly created folder `git-export-dir` out of
+   `sinatra-boilerplate`.
+5. Rename it.
+6. Start hacking! Your boilerplate is in that directory!
+
 ## Acknowledgements
 
 All the stuff used here is either open source or donation ware and totally the work of the people who made it, not me. I just put the pieces together and bundled it up all pretty-like. This little starter package wouldn't be possible without the awesome work these guys have done and their generosity in sharing their code with the rest of us.
