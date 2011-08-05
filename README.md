@@ -90,16 +90,69 @@ Not so great. You have to write `#content` each time you want to address that el
 Wait, **what**? Yeah, you can nest it all. If you do any CSS at all in your life ever then you should be using Compass. [Scope the docs and get crackin'.](http://compass-style.org/)
 
 
+## Sinatra Addons
+
+### Run Later
+
+After filters are great and all, but they block the rendering of the page and that sucks. I want to be able to, mid-render, tell Ruby to go off and do some stuff that I know will take a long time without it stopping the current page. Think of it as an asynchronous (ya know, like AJAX) Ruby request!
+
+This is a plain insert of my [Sinatra run_later module](https://github.com/l3ck/sinatra_run_later), which I based off of [this run_later module](https://github.com/pmamediagroup/sinatra_run_later) which is based off of [THIS run_later module](https://github.com/mattmatt/run_later). Use it like so:
+
+<pre>
+require 'rubygems'
+require 'sinatra'
+require 'run_later'
+
+get '/' do
+  run_later do
+    # some task that you don't want to block.
+    sleep 20
+  end
+
+  "Hello World"
+end
+</pre>
+
+
+
+
+
+
+
+
+### Form Tag Helpers
+
+The thing I missed most in Sinatra was the glorious `input_for` kind of stuff you get with Rails, so I made some!
+
+<pre>
+# input_for
+input_for :first_name # => &lt;input type='text' name='first_name' id='first_name' value=''&gt;
+
+# input_for with options
+input_for :email, :type => 'email', :required => nil # => &lt;input type='email' name='email' id='email' required value=''&gt;
+
+# select_for
+select_for 'days', { :monday => 'Monday', :myday => 'MY DAY!' }
+
+# yields
+&lt;select name='days' id='days' size='1'&gt;
+	&lt;option value='monday'>Monday&lt;/option&gt;
+    &lt;option value='myday'>MY DAY!&lt;/option&gt;
+&lt;/select&gt;
+</pre>
+
+
+
+
+
+
+
 ## Extra Hawt Sauce
 
 I've added a bunch of modules and helper functions that I use all the time to this to (hopefully) make your life easier when you're getting your app first setup. Some of the helpers methods I've added include:
 
-* **form tag helpers**
-  * stuff like `input_for` and `select_for` to make form construction easier
 * **asset tag helpers**
   * stuff like `jit` and `slt`
-* **run later**
-  * for real, true after filters
 * **core extensions**
   * extended Hash class with some useful methods for the web
 * **Sinatra extensions**
@@ -109,6 +162,11 @@ I've added a bunch of modules and helper functions that I use all the time to th
 ## How to Use It
 
 You like it? **Awesome!** Here's how to use it:
+
+1. Download the source of this project.
+2. Start hacking.
+
+Or if you want the more Gity way:
 
 1. Clone this project: `git clone git://github.com/l3ck/sinatra-boilerplate.git sinatra-boilerplate`
 2. `CD` into the clone: `cd sinatra-boilerplate`
