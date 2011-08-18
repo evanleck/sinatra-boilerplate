@@ -62,6 +62,21 @@ helpers do
     end
   end
   
+  # cookie getter / setter
+  def cookie name, value = nil, duration = 15
+    if value
+      response.set_cookie name, { 
+        :value    => value,
+        :expires  => Time.now + (60 * duration),
+        :path     => "/",
+        :httponly => true,
+        :secure   => production?
+      }
+    else
+      request.cookies[name]
+    end
+  end
+  
   # really simple, easily cracked string obfuscator
   def encode plain_text
     Base64.urlsafe_encode64(plain_text)
@@ -78,24 +93,23 @@ helpers do
   
   # checks an array of params from the params hash
   def ensure_params args
-    truthy = true
-    
-    args.each do |arg|
-      truthy = ensure_param arg
-      break unless truthy
-    end
-    
-    truthy
+    return catch(:truthy) {
+      args.each do |arg|
+        throw(:truthy, false) unless ensure_param(arg)
+      end
+      
+      throw(:truthy, true)
+    }
   end
   
   # debug log to server log if development
   # else outputs nothing (for production)
   def dlog(*args)
     if development?
-      puts "\n================================================\n"
+      $stdout.puts "\n================================================\n"
       for arg in args
-        puts arg
-        puts "================================================\n"
+        $stdout.puts arg
+        $stdout.puts "================================================\n"
       end
     end
   end

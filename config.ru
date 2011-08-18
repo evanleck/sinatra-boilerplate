@@ -3,6 +3,8 @@
 # 
 require 'bundler'               # gem requires
 
+# if you're trying to run your app with Pow (http://pow.cx/) then ENV['RACK_ENV'] might not show up
+#   use something else to determine env then :)
 Bundler.require(:default, ENV['RACK_ENV'].to_sym)  # only loads environment specific gems
 
 # core Ruby requires, modules and the main app file
@@ -21,7 +23,7 @@ use Rack::Session::Pool,        # session via pool that sets a cookie reference
 	:key => 'rack.session',       # cookie name (probably change this)
 	:secret => '374J2977311JQR87Jd3c9UKr3b8DGU', # probably change this too
 	:httponly => true,
-	:secure => false,             # change for more secur cookies
+	:secure => false,             # change for more secure cookies
 	:path => '/'
 
 use Rack::Flash                 # provides flash[:notice] and flash[:error] support
@@ -29,7 +31,7 @@ use Rack::Static,               # trying to catch these for static files
   :urls => ["/css", "/images", "/js"], 
   :root => "public"             # local folder root for public resources
 
-if ENV['RACK_ENV'] == 'production'           # production config / requires
+if production?                  # production config / requires
   require './lib/middleware/exceptionmailer'
   
   use Rack::ExceptionMailer, 
