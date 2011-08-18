@@ -19,9 +19,9 @@ I also use `Modernizr.load` a **ton** and recommend you checkout [yepnope.js](ht
 For example, let's say you're like everybody else who hasn't been living under a JS rock and are using jQuery. Now let's say you want to execute some code on a specific page but (for whatever reason) you don't have access to the main JS source or don't want to initiate a whole other GET request for like 3 lines of code. In the `head` of your document you have `Modernizr.load` like so:
 
 ```html
-&lt;head>
-	&lt;-- some crap... -->
-	&lt;script>
+<head>
+	<-- some crap... -->
+	<script>
 		Modernizr.load({
 			test: true,
 			load: ['//ajax.googleapis.com/ajax/libs/jquery/1.6.2/jquery.min.js', '/js/app.js'],
@@ -29,8 +29,8 @@ For example, let's say you're like everybody else who hasn't been living under a
 				log('Modernizr finished loading our scripts!');
 			}
 		});
-	&lt;/script>
-&lt;/head>
+	</script>
+</head>
 ```
 
 Now, you're in your view file (say, the `index.erb` file in this repo) and want to execute some code like this:
@@ -42,13 +42,13 @@ $('body').addClass('RADSAUCE');
 **BUT WAIT!** That needs jQuery! This is where the real hot sauce for me is with `Modernizr.load` because in your view file you can throw this bad boy in:
 
 ```javascript
-&lt;script>
+<script>
 	Modernizr.load({
 		complete: function(){
 			$('body').addClass('RADSAUCE');
 		}
 	});
-&lt;/script>
+</script>
 ```
 
 **BAM!** jQuery already got loaded because we're in the `complete` callback so we just get all crazy with our DOM manipulation without having to sweat it.
@@ -70,7 +70,7 @@ Compass + SASS gives you all kinds of great mixins and nesting stuff that would 
 
 Not so great. You have to write `#content` each time you want to address that element. How about with Compass?
 
-```css
+```sass
 #content {
 	border: 1px solid red;
 	
@@ -126,19 +126,19 @@ The thing I missed most in Sinatra was the glorious `input_for` kind of stuff yo
 
 ```ruby
 # input_for
-input_for :first_name # => &lt;input type='text' name='first_name' id='first_name' value=''&gt;
+input_for :first_name # => <input type='text' name='first_name' id='first_name' value=''>
 
 # input_for with options
-input_for :email, :type => 'email', :required => nil # => &lt;input type='email' name='email' id='email' required value=''&gt;
+input_for :email, :type => 'email', :required => nil # => <input type='email' name='email' id='email' required value=''>
 
 # select_for
 select_for 'days', { :monday => 'Monday', :myday => 'MY DAY!' }
 
 # yields
-&lt;select name='days' id='days' size='1'&gt;
-	&lt;option value='monday'>Monday&lt;/option&gt;
-    &lt;option value='myday'>MY DAY!&lt;/option&gt;
-&lt;/select&gt;
+# <select name='days' id='days' size='1'>
+# 	<option value='monday'>Monday</option>
+#     <option value='myday'>MY DAY!</option>
+# </select>
 ```
 
 
