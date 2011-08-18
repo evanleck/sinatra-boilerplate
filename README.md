@@ -20,7 +20,7 @@ For example, let's say you're like everybody else who hasn't been living under a
 
 ```html
 <head>
-	<-- some crap... -->
+	<!-- some crap... -->
 	<script>
 		Modernizr.load({
 			test: true,
@@ -42,13 +42,11 @@ $('body').addClass('RADSAUCE');
 **BUT WAIT!** That needs jQuery! This is where the real hot sauce for me is with `Modernizr.load` because in your view file you can throw this bad boy in:
 
 ```javascript
-<script>
-	Modernizr.load({
-		complete: function(){
-			$('body').addClass('RADSAUCE');
-		}
-	});
-</script>
+Modernizr.load({
+	complete: function(){
+		$('body').addClass('RADSAUCE');
+	}
+});
 ```
 
 **BAM!** jQuery already got loaded because we're in the `complete` callback so we just get all crazy with our DOM manipulation without having to sweat it.
@@ -70,7 +68,7 @@ Compass + SASS gives you all kinds of great mixins and nesting stuff that would 
 
 Not so great. You have to write `#content` each time you want to address that element. How about with Compass?
 
-```sass
+```scss
 #content {
 	border: 1px solid red;
 	
