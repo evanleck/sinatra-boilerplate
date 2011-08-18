@@ -18,7 +18,7 @@ I also use `Modernizr.load` a **ton** and recommend you checkout [yepnope.js](ht
 
 For example, let's say you're like everybody else who hasn't been living under a JS rock and are using jQuery. Now let's say you want to execute some code on a specific page but (for whatever reason) you don't have access to the main JS source or don't want to initiate a whole other GET request for like 3 lines of code. In the `head` of your document you have `Modernizr.load` like so:
 
-<pre>
+```html
 &lt;head>
 	&lt;-- some crap... -->
 	&lt;script>
@@ -31,17 +31,17 @@ For example, let's say you're like everybody else who hasn't been living under a
 		});
 	&lt;/script>
 &lt;/head>
-</pre>
+```
 
 Now, you're in your view file (say, the `index.erb` file in this repo) and want to execute some code like this:
 
-<pre>
+```javascript
 $('body').addClass('RADSAUCE');
-</pre>
+```
 
 **BUT WAIT!** That needs jQuery! This is where the real hot sauce for me is with `Modernizr.load` because in your view file you can throw this bad boy in:
 
-<pre>
+```javascript
 &lt;script>
 	Modernizr.load({
 		complete: function(){
@@ -49,7 +49,7 @@ $('body').addClass('RADSAUCE');
 		}
 	});
 &lt;/script>
-</pre>
+```
 
 **BAM!** jQuery already got loaded because we're in the `complete` callback so we just get all crazy with our DOM manipulation without having to sweat it.
 
@@ -61,16 +61,16 @@ Because CSS sucks and SASS + Compass doesn't.
 
 Compass + SASS gives you all kinds of great mixins and nesting stuff that would surely make anyone who's done a lot of CSS quiver in schoolgirl-like delight. Take, for example, some CSS:
 
-<pre>
+```css
 #content { border: 1px solid red; }
 #content p { font-size: 34em; }
 #content p.small { font-size: 12em; }
 #content em { color: white; }
-</pre>
+```
 
 Not so great. You have to write `#content` each time you want to address that element. How about with Compass?
 
-<pre>
+```css
 #content {
 	border: 1px solid red;
 	
@@ -85,7 +85,7 @@ Not so great. You have to write `#content` each time you want to address that el
 		color: white;
 	}
 }
-</pre>
+```
 
 Wait, **what**? Yeah, you can nest it all. If you do any CSS at all in your life ever then you should be using Compass. [Scope the docs and get crackin'.](http://compass-style.org/)
 
@@ -98,7 +98,7 @@ After filters are great and all, but they block the rendering of the page and th
 
 This is a plain insert of my [Sinatra run_later module](https://github.com/l3ck/sinatra_run_later), which I based off of [this run_later module](https://github.com/pmamediagroup/sinatra_run_later) which is based off of [THIS run_later module](https://github.com/mattmatt/run_later). Use it like so:
 
-<pre>
+```ruby
 require 'rubygems'
 require 'sinatra'
 require 'run_later'
@@ -111,7 +111,7 @@ get '/' do
 
   "Hello World"
 end
-</pre>
+```
 
 
 
@@ -124,7 +124,7 @@ end
 
 The thing I missed most in Sinatra was the glorious `input_for` kind of stuff you get with Rails, so I made some!
 
-<pre>
+```ruby
 # input_for
 input_for :first_name # => &lt;input type='text' name='first_name' id='first_name' value=''&gt;
 
@@ -139,7 +139,7 @@ select_for 'days', { :monday => 'Monday', :myday => 'MY DAY!' }
 	&lt;option value='monday'>Monday&lt;/option&gt;
     &lt;option value='myday'>MY DAY!&lt;/option&gt;
 &lt;/select&gt;
-</pre>
+```
 
 
 
