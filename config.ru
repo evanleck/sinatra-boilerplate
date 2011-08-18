@@ -8,7 +8,7 @@ require 'bundler' # gem requires
 Bundler.require(:default, ENV['RACK_ENV'].to_sym)  # only loads environment specific gems
 
 # core Ruby requires, modules and the main app file
-%w(base64 timeout cgi date ./application/constants ./app).each do |requirement|
+%w(base64 digest/sha2 timeout cgi date ./application/constants ./app).each do |requirement|
   require requirement
 end
 
