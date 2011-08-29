@@ -88,7 +88,7 @@ helpers do
   
   # checks the params hash for a single argument as both !nil and !empty
   def ensure_param arg
-    return !params[arg.to_sym] || !params[arg.to_sym].empty?
+    params[arg.to_sym].present?
   end
   
   # checks an array of params from the params hash
