@@ -1,6 +1,6 @@
 class Hash
 	# converts a Hash to a key value pair for use in a querystring (qs is short for querystring)
-	#   Also, it uses Rack::Utils to escape the strings
+	#   Also, it uses CGI to escape the strings
 	#
 	#		{ :id => 22, :me => 'you sucka!' }.to_qs
 	#
