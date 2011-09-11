@@ -5,12 +5,12 @@ module Rack
   class ExceptionMailer
     
     def initialize(app, options)
-      @app =                    app
-      @to =                     Array(options[:to]) # could be an array
-      @from =                   options[:from]      # should be string
-      @subject =                options[:subject] || "Error Caught in Rack Application" # again, a string
-      @template =               ERB.new(TEMPLATE) # the template built in here (non-mutable { for the moment })
-      @html_template =          ERB.new(HTML_TEMPLATE) # the same template in HTML
+      @app           = app
+      @to            = Array(options[:to]) # could be an array
+      @from          = options[:from]      # should be string
+      @subject       = options[:subject] || "Error Caught in Rack Application" # again, a string
+      @template      = ERB.new(TEMPLATE) # the template built in here (non-mutable { for the moment })
+      @html_template = ERB.new(HTML_TEMPLATE) # the same template in HTML
     end
   
     def call(env)
@@ -39,7 +39,6 @@ module Rack
       @to.each do |to|
         Pony.mail :to => to, :from => @from, :subject  => @subject, :body => body, :html_body => html_body
       end
-      
     end
     
     def extract_body(env)
