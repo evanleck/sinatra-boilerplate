@@ -16,10 +16,10 @@ module Sinatra
     def input_for param, attributes = {}
       # default values when not specified.
     	attributes = {
-    		:type => 'text', # can be any HTML input type ('email', 'submit', 'password', etc.)
+    		:type  => 'text', # can be any HTML input type ('email', 'submit', 'password', etc.)
     		:value => h(params[param.to_sym]) || '',
-    		:name => param,
-    		:id => attributes[:id] || param
+    		:name  => param,
+    		:id    => attributes[:id] || param
     	}.merge(attributes)
 
       "<input #{ attributes.to_attr }>"
@@ -50,8 +50,8 @@ module Sinatra
     # 
     def checkbox_for param, checked_if, attributes = {}
       attributes = {
-        :type => 'checkbox',
-        :value => 'true'
+        :type    => 'checkbox',
+        :value   => 'true'
       }.merge(attributes)
   
       if checked_if || params[param.to_sym] == 'true'
@@ -65,8 +65,8 @@ module Sinatra
     def textarea_for param, attributes = {}
       # default values to include
       attributes = {
-        :name => param,
-        :id => attributes[:id] || param
+        :name    => param,
+        :id      => attributes[:id] || param
       }.merge(attributes)
   
       "<textarea #{ attributes.to_attr }>#{ h(params[param.to_sym]) || '' }</textarea>"
