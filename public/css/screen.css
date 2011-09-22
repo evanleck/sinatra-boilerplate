@@ -724,3 +724,15 @@ header h1 {
 #sidebar {
   color: #777;
 }
+/* line 20, ../sass/screen.scss */
+#sidebar img {
+  -moz-box-shadow: #cccccc 1px 1px 3px;
+  -webkit-box-shadow: #cccccc 1px 1px 3px;
+  -o-box-shadow: #cccccc 1px 1px 3px;
+  box-shadow: #cccccc 1px 1px 3px;
+  background: #eee;
+  border: 1px solid #bbb;
+  display: block;
+  padding: 0.25em;
+  max-width: 97%;
+}

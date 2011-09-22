@@ -16,5 +16,15 @@ header {
 
 #sidebar {
   color: #777;
+
+  img {
+    @include box-shadow(#ccc 1px 1px 3px);
+
+    background: #eee;
+    border: 1px solid #bbb;
+    display: block;
+    padding: 0.25em;
+    max-width: 97%;
+  }
 }
 
