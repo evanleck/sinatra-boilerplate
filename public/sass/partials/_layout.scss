@@ -1,0 +1,17 @@
+/* setup your layout, columns etc. */
+footer, header {
+  @include column($blueprint-grid-columns, true);
+}
+
+.container {
+  @include container;
+}
+
+#main {
+  @include column($blueprint-grid-columns / 3 * 2 - 1);
+  @include colborder;
+}
+
+#sidebar {
+  @include column($blueprint-grid-columns / 3, true);
+}

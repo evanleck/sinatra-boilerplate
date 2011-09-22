@@ -11,46 +11,12 @@ $blueprint-grid-width: ($blueprint-container-size + $blueprint-grid-margin) / $b
 
 // Import all the default blueprint modules so that we can access their mixins.
 @import "blueprint";
+@import "compass";
 
 body {
-  @include blueprint-typography(true);
   @include blueprint-utilities;
-  @include blueprint-debug;
-  @include blueprint-interaction;
-  
-  &.ie6, &.ie7, &.ie8 {
-    @include blueprint-ie(true);
-  }
 }
 
-form { @include blueprint-form; }
-
-@import "boilerplate"; // might be some collisions with Blueprint, but who cares :)
-
-footer, header {
-  @include column($blueprint-grid-columns, true);
-}
-
-header {
-  h1 {
-    font-weight: bold;
-    letter-spacing: -1px;
-    margin: 0.8em 0;
-  }
-}
-
-.container {
-  @include container;
-}
-
-#main {
-  @include column($blueprint-grid-columns / 3 * 2 - 1);
-  @include colborder;
-  // = goodies go here :)
-}
-
-#sidebar {
-  @include column($blueprint-grid-columns / 3, true);
-  
-  color: #777;
+form {
+  @include blueprint-form;
 }

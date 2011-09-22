@@ -1,5 +1,20 @@
-// This import applies a global reset to any page that imports this stylesheet.
-@import "blueprint/reset";
-// To configure blueprint, edit the partials/base.sass file.
+// To configure blueprint, edit the partials/_base.scss file.
 @import "partials/base";
+@import "partials/boilerplate";
+@import "partials/layout";
+
+/* Drop your styles in here! */
+header {
+  h1 {
+    @include text-shadow(#ccc 1px 1px 3px);
+
+    font-weight: bold;
+    letter-spacing: -1px;
+    margin: 0.8em 0;
+  }
+}
+
+#sidebar {
+  color: #777;
+}
 

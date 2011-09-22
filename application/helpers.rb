@@ -76,7 +76,7 @@ helpers do
       request.cookies[name]
     end
   end
-  
+
   # really simple, easily cracked string obfuscator
   def encode plain_text
     Base64.urlsafe_encode64(plain_text)
@@ -85,23 +85,23 @@ helpers do
   def decode encoded_text
     Base64.urlsafe_decode64(encoded_text)
   end
-  
+
   # checks the params hash for a single argument as both !nil and !empty
   def ensure_param arg
     params[arg.to_sym].present?
   end
-  
+
   # checks an array of params from the params hash
   def ensure_params args
     return catch(:truthy) {
       args.each do |arg|
         throw(:truthy, false) unless ensure_param(arg)
       end
-      
+
       throw(:truthy, true)
     }
   end
-  
+
   # debug log to server log if development
   # else outputs nothing (for production)
   def dlog(*args)
