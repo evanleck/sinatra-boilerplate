@@ -8,6 +8,15 @@ sinatra-boilerplate uses *some* of the utter uber-hawtness that is the [HTML5 Bo
 
 The base layout file is pretty compliant with what the Boilerplate puts out but I've added in `Modernizr.load` instead of putting all the JS at the bottom and a few other minor tweaks. Most of the comments have been left in place though.
 
+Direct implementations from HTML5BP:
+
+* `html` scoping by class.
+* Internet explorer compatibility `meta` tag.
+* Viewport settings for mobile browsers.
+* Better analytics script.
+* Prompt IE6 users to use Chrome Frame.
+* ... probably more that I've forgotten :)
+
 ## Modernizr
 
 [Modernizr](http://www.modernizr.com/) is fantastic and I threw it in because... well, it's fantastic!
@@ -85,7 +94,9 @@ Not so great. You have to write `#content` each time you want to address that el
 }
 ```
 
-Wait, **what**? Yeah, you can nest it all. If you do any CSS at all in your life ever then you should be using Compass. [Scope the docs and get crackin'.](http://compass-style.org/)
+Wait, **what**? Yeah, you can nest it all. If you do any CSS at all in your life ever then you should be using Compass.
+
+[Scope the docs and get crackin'.](http://compass-style.org/)
 
 
 ## Sinatra Addons
@@ -161,17 +172,16 @@ I've added a bunch of modules and helper functions that I use all the time to th
 
 You like it? **Awesome!** Here's how to use it:
 
-1. Download the source of this project.
+1. Hit the download link at the top of the page.
 2. Start hacking.
 
-Or if you want the more Gity way:
+Or if you want the more Git-y way:
 
 1. Clone this project: `git clone git://github.com/l3ck/sinatra-boilerplate.git sinatra-boilerplate`
 2. `CD` into the clone: `cd sinatra-boilerplate`
 3. Export a clean version: `git checkout-index --prefix=git-export-dir/ -a`
-4. Copy the newly created folder `git-export-dir` out of
-   `sinatra-boilerplate`.
-5. Rename it.
+4. Move the newly created folder `git-export-dir` out of
+   `sinatra-boilerplate` with some meaningfulish name.
 6. Start hacking! Your boilerplate is in that directory!
 
 ## Acknowledgements
