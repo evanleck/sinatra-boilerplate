@@ -31,12 +31,14 @@ helpers do
   # 
   #   <%= link_to 'Home', '/', :class => 'home-link', :title => 'Click here to go home', :data => { :to => '#home' } %>
   #
-  def link_to text, link, args = {}
-  	if link == request.path_info
-  		args[:class] = "#{ args[:class] } current"
-  	end
-  
-    "<a href='#{ link }' #{ args.to_attr }>#{ text }</a>"
+  def link_to(text, link, attributes = {})
+		if link == (request.url.include?('?') ? "#{ request.path_info }?#{ request.query_string }" : request.path_info)
+			attributes[:class] = "#{ attributes[:class] } current"
+		end
+    
+    attributes.merge!({ href: link })
+    
+    "<a #{ attributes.to_attr }>#{ text }</a>"
   end
   
   # Returns the url of the referer along with the params posted to that page
@@ -92,7 +94,7 @@ helpers do
   end
 
   # checks an array of params from the params hash
-  def ensure_params args
+  def ensure_params *args
     return catch(:truthy) {
       args.each do |arg|
         throw(:truthy, false) unless ensure_param(arg)
