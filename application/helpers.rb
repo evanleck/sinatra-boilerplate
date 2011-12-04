@@ -36,7 +36,7 @@ helpers do
 			attributes[:class] = "#{ attributes[:class] } current"
 		end
     
-    attributes.merge!({ href: link })
+    attributes.merge!({ href, link })
     
     "<a #{ attributes.to_attr }>#{ text }</a>"
   end
