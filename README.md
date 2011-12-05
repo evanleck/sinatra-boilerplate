@@ -84,7 +84,7 @@ Not so great. You have to write `#content` each time you want to address that el
 	p {
 		font-size: 34em;
 		
-		&amp;.small {
+		&.small {
 			font-size: 12em;
 		}
 	}
