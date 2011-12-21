@@ -13,7 +13,7 @@ module Sinatra
     # 
     #   <input type='hidden' name='something_hidden' id='something_hidden' value='Shhhhhh'>
     # 
-    def input_for param, attributes = {}
+    def input_for(param, attributes = {})
       # default values when not specified.
     	attributes = {
     		:type  => 'text', # can be any HTML input type ('email', 'submit', 'password', etc.)
@@ -26,7 +26,7 @@ module Sinatra
     end
     
     # radio_for creates an input tag of type radio and marks it `checked` if the param argument is set to the same value in the `params` hash
-    def radio_for param, attributes = {}
+    def radio_for(param, attributes = {})
       attributes = {
         :type => 'radio'
       }.merge(attributes)
@@ -48,7 +48,7 @@ module Sinatra
     # 
     # Which will be marked with `checked` if `User.is_cool?` evaluates to true
     # 
-    def checkbox_for param, checked_if, attributes = {}
+    def checkbox_for(param, checked_if, attributes = {})
       attributes = {
         :type    => 'checkbox',
         :value   => 'true'
@@ -62,7 +62,7 @@ module Sinatra
     end
     
     # creates a simple <textarea> tag
-    def textarea_for param, attributes = {}
+    def textarea_for(param, attributes = {})
       # default values to include
       attributes = {
         :name    => param,
@@ -87,7 +87,7 @@ module Sinatra
     #
     #   <option value='love' selected>I love them</option>
     # 
-    def option_for param, attributes = {}
+    def option_for(param, attributes = {})
       if params[param.to_sym]
         default = params[param].to_s
       elsif attributes[:default]
@@ -114,7 +114,7 @@ module Sinatra
     #     <option value='myday'>MY DAY!</option>
     #   </select>
     #
-    def select_for param, options, attributes = {}
+    def select_for(param, options, attributes = {})
       "<select #{ attributes.to_attr } name='#{ param }' id='#{ param }' size='1'>
         #{ options.collect { |key, val| option_for(param, :key => key, :value => val, :default => attributes[:default]) }.join(' ').chomp }
       </select>"

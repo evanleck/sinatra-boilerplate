@@ -47,7 +47,7 @@ helpers do
   #
   #   redirect to(back_with_params(:my_extra_param => 'my extra value'))
   #
-  def back_with_params o = {}
+  def back_with_params(o = {})
     rejected_keys = [:password] # these won't be passed back to the page
     back_to = request.referer ? request.referer : '/'
     params_string = params.blank? ? '' : "?#{ build_query(o.merge(params).delete_if { |k, v| rejected_keys.include?(k.to_sym) }) }"
@@ -55,8 +55,8 @@ helpers do
     back_to + params_string
   end
   
-  # handles a non-working cancel button
-  def back_or new_path
+  # Handles an unruly `back` method call with an alternate route
+  def back_or(new_path)
     if back == '/' || back == request.path_info
       new_path
     else
@@ -64,8 +64,17 @@ helpers do
     end
   end
   
-  # cookie getter / setter
-  def cookie name, value = nil, duration = 15
+  # Cookie getter / setter
+  # 
+  # Setter (sets the 'my-cookie' cookie to 'this here is a value'):
+  #   
+  #   cookie 'my-cookie', 'this here is a value'
+  #
+  # Getter
+  # 
+  #   cookie 'my-cookie' # => 'this here is a value'
+  # 
+  def cookie(name, value = nil, duration = 15)
     if value
       response.set_cookie name, { 
         :value    => value,
@@ -79,22 +88,22 @@ helpers do
     end
   end
 
-  # really simple, easily cracked string obfuscator
-  def encode plain_text
+  # really simple, easily cracked (and totally insecure { did I mention this is patchy? }) string obfuscator
+  def encode(plain_text)
     Base64.urlsafe_encode64(plain_text)
   end
   # de-fuscator
-  def decode encoded_text
+  def decode(encoded_text)
     Base64.urlsafe_decode64(encoded_text)
   end
 
   # checks the params hash for a single argument as both !nil and !empty
-  def ensure_param arg
+  def ensure_param(arg)
     params[arg.to_sym].present?
   end
 
   # checks an array of params from the params hash
-  def ensure_params *args
+  def ensure_params(*args)
     return catch(:truthy) {
       args.each do |arg|
         throw(:truthy, false) unless ensure_param(arg)
