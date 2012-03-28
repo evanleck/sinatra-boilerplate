@@ -23,7 +23,6 @@ use Rack::Session::Pool,              # session via pool that sets a cookie refe
 	:secure       => false,             # change for more secure cookies
 	:path         => '/'
 
-use Rack::Flash                 # provides flash[:notice] and flash[:error] support
 use Rack::Static,               # trying to catch these for static files
   :urls => ["/css", "/images", "/js"], 
   :root => "public"             # local folder root for public resources

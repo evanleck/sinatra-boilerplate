@@ -7,7 +7,7 @@ source :rubygems
 # = All =
 gem 'rack'                      # the base of the base
 gem 'sinatra'                   # the base of our web app
-gem 'rack-flash'                # enables flash[:notice] && flash[:error]
+gem 'sinatra-flash', require: 'sinatra/flash' # enables flash[:notice] && flash[:error]
 gem 'thin'                      # thin server
 
 group :production do
@@ -16,5 +16,7 @@ end
 
 group :development do
   gem 'compass'
-  gem 'foreman'
+  
+  gem 'guard'                   # follow files and guard them
+  gem 'guard-shell'
 end
