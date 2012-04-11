@@ -160,8 +160,8 @@ select_for 'days', { :monday => 'Monday', :myday => 'MY DAY!' }
 
 I've added a bunch of modules and helper functions that I use all the time to this to (hopefully) make your life easier when you're getting your app first setup. Some of the helpers methods I've added include:
 
-* **asset tag helpers**
-  * stuff like `jit` and `slt`
+* **SPROCKETS**
+  * holy crap that's nice!!
 * **core extensions**
   * extended Hash class with some useful methods for the web
 * **Sinatra extensions**
