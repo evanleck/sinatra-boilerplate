@@ -4,6 +4,8 @@
 helpers do
   # helpers
   include Rack::Utils
+  include Sprockets::Helpers
+  
   alias_method :h, :escape_html
   alias_method :e, :escape
   
@@ -18,8 +20,9 @@ helpers do
   #   erb :"partials/flash"
   # 
   # which is just weird and ugly.
-  def erb path, *args
-    path = path.to_sym
+  def erb(template, options = {}, locals = {})
+    template = template.to_sym
+    options[:layout] = options[:layout].present? ? options[:layout] : !request.xhr?
     super
   end
   

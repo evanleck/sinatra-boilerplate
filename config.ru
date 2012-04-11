@@ -72,5 +72,10 @@ set :raise_errors, true         # let's exceptions propagate to other middleware
 # / : : : : : -, :¯'''''''''''¯ : : _,,-~'' : : : : : : : : : : : : : :| : : : : : : : : :
 # : : : : : : : :¯''~~~~~~''' : : : : : : : : : : : : : : : : : : | : : : : : : : : :
 #
-run Sinatra::Application
+map Sinatra::Application.settings.assets_prefix do
+  run Sinatra::Application.sprockets
+end
 
+map '/' do
+  run Sinatra::Application
+end

@@ -18,7 +18,7 @@
 
 		<!-- Place favicon.ico and apple-touch-icon.png in the root directory: mathiasbynens.be/notes/touch-icons -->
 
-		<%= slt "/css/screen.css" %>
+		<link rel="stylesheet" href="<%= stylesheet_path('screen') %>" media="screen">
 
 		<!-- More ideas for your <head> here: h5bp.com/docs/#head-Tips -->
 		<!-- 
@@ -27,11 +27,11 @@
 			For Modernizr.load to work, check the box for it on the build page
 		-->
 		<!-- for more on Modernizr.load, check out http://yepnopejs.com/, that's what it is -->
-		<%= jit "/js/modernizr.js" %>
-		<script type="text/javascript" charset="utf-8">
+    <script src="<%= javascript_path('modernizr') %>"></script>
+		<script>
 			Modernizr.load({
 				test: true,
-				load: ['//ajax.googleapis.com/ajax/libs/jquery/1.7.0/jquery.min.js', '/js/app.js'],
+				load: ['//ajax.googleapis.com/ajax/libs/jquery/1.7.0/jquery.min.js', '<%= javascript_path('app') %>'],
 				complete: function(){
 					log('Modernizr finished loading our scripts!');
 				}
@@ -49,7 +49,7 @@
 				<%= yield %>
 			</div>
 			<aside id="sidebar">
-        <img src='/i/llama.jpeg'>
+        <img src='<%= image_path('llama.jpeg') %>'>
 				<p>The Llama sees all.</p>
 			</aside>
 		</div><!-- .container -->
