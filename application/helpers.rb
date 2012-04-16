@@ -23,6 +23,7 @@ helpers do
   def erb(template, options = {}, locals = {})
     template = template.to_sym
     options[:layout] = options[:layout].present? ? options[:layout] : !request.xhr?
+    
     super
   end
   
