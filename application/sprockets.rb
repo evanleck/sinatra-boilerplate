@@ -15,4 +15,11 @@ configure do
     config.prefix      = settings.assets_prefix
     config.digest      = true
   end
+  
+  # configure Compass so it can find images
+  Compass.configuration do |compass|
+    compass.project_path = settings.assets_path
+    compass.images_dir   = 'images'
+    compass.output_style = :compressed
+  end
 end
