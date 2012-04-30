@@ -1,6 +1,6 @@
 # Sinatra Boilerplate
 
-A great place to start with [Sinatra](http://www.sinatrarb.com/), [HTML5 Boilerplate](http://html5boilerplate.com/) and [Compass](http://compass-style.org/) all cooked together.
+A great place to start with [Sinatra](http://www.sinatrarb.com/), [HTML5 Boilerplate](http://html5boilerplate.com/), [Compass](http://compass-style.org/), [CoffeeScript](http://coffeescript.org/) and [Sprockets (aka the asset pipeline)](https://github.com/sstephenson/sprockets) all cooked together.
 
 ## HTML5 Boilerplate
 
@@ -215,3 +215,5 @@ Oh, and...
 # / : : : : : -, :¯'''''''''''¯ : : _,,-~'' : : : : : : : : : : : : : :| : : : : : : : : :
 # : : : : : : : :¯''~~~~~~''' : : : : : : : : : : : : : : : : : : | : : : : : : : : :
 </pre>
+
+So, ya know, watch out...

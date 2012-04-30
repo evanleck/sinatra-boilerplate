@@ -1,15 +1,20 @@
 # = Gemfile containing requirements for this app =
 #     see http://gembundler.com/ for more on how to use this file
-
-# = source (there are others but whatever)
+# source (there are others but whatever)
 source :rubygems
 
-# = All =
-gem 'rack'                      # the base of the base
-gem 'sinatra'                   # the base of our web app
+# server
+gem 'thin'
+
+# rack
+gem 'rack'
+
+# sinatra
+gem 'sinatra'
 gem 'sinatra-flash', require: 'sinatra/flash' # enables flash[:notice] && flash[:error]
+
+# faster better stronger
 gem 'erubis'
-gem 'thin'                      # thin server
 
 # asset stuff
 gem 'coffee-script'   # build the JS

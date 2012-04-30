@@ -8,13 +8,11 @@ require 'bundler' # gem requires
 Bundler.require(:default, ENV['RACK_ENV'].to_sym)  # only loads environment specific gems
 
 # core Ruby requires, modules and the main app file
-%w(base64 digest/sha2 timeout cgi date ./application/constants ./app).each do |requirement|
+%w(base64 digest/sha2 timeout cgi date ./app).each do |requirement|
   require requirement
 end
 
-# ==============
 # = Middleware =
-# ==============
 use Rack::Session::Pool,              # session via pool that sets a cookie reference
 	:expire_after => 1800,              # 30 minutes
 	:key          => 'rack.session',    # cookie name (probably change this)
@@ -23,11 +21,7 @@ use Rack::Session::Pool,              # session via pool that sets a cookie refe
 	:secure       => false,             # change for more secure cookies
 	:path         => '/'
 
-use Rack::Static,               # trying to catch these for static files
-  :urls => ["/css", "/images", "/js"], 
-  :root => "public"             # local folder root for public resources
-
-if production?                  # production config / requires
+if production? # production config / requires
   require './application/middleware/exceptionmailer'
   
   use Rack::ExceptionMailer, 
@@ -35,13 +29,11 @@ if production?                  # production config / requires
     :from    => 'errors@yourdomain.com',
     :subject => 'Error Occurred on Some Rack Application'
   
-else                            # development or testing only
+else # development or testing only
   use Rack::ShowExceptions
 end
 
-# =================
 # = Configuration =
-# =================
 set :run, false
 set :server, %w(thin mongrel webrick)
 set :show_exceptions, false     # no need because we're using Rack::ShowExceptions
@@ -72,10 +64,13 @@ set :raise_errors, true         # let's exceptions propagate to other middleware
 # / : : : : : -, :¯'''''''''''¯ : : _,,-~'' : : : : : : : : : : : : : :| : : : : : : : : :
 # : : : : : : : :¯''~~~~~~''' : : : : : : : : : : : : : : : : : : | : : : : : : : : :
 #
+
+# = map it out for me
+# sprockets
 map Sinatra::Application.settings.assets_prefix do
   run Sinatra::Application.sprockets
 end
-
+# main app
 map '/' do
   run Sinatra::Application
 end
