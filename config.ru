@@ -18,7 +18,7 @@ use Rack::Session::Pool,              # session via pool that sets a cookie refe
 	:key          => 'rack.session',    # cookie name (probably change this)
 	:secret       => SecureRandom.hex(32), # Unpredictable, 256bit randomly signed session cookies.
 	:httponly     => true,              # bad js! No cookies for you!
-	:secure       => true,             # Send session cookies over SSL or risk the firesheep!
+	:secure       => false,             # NOTE: if you're storing user authentication information in session set this to true and provide pages via SSL instead of standard HTTP or, to quote nkp, "risk the firesheep!"
 	:path         => '/'
 
 if production? # production config / requires
