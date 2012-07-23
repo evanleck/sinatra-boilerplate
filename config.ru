@@ -8,7 +8,7 @@ require 'bundler' # gem requires
 Bundler.require(:default, ENV['RACK_ENV'].to_sym)  # only loads environment specific gems
 
 # core Ruby requires, modules and the main app file
-%w(base64 digest/sha2 timeout cgi date ./app).each do |requirement|
+%w(base64 securerandom timeout cgi date ./app).each do |requirement|
   require requirement
 end
 
@@ -16,9 +16,9 @@ end
 use Rack::Session::Pool,              # session via pool that sets a cookie reference
 	:expire_after => 1800,              # 30 minutes
 	:key          => 'rack.session',    # cookie name (probably change this)
-	:secret       => Digest::SHA256.hexdigest(Time.now.to_s), # keeps it random :)
+	:secret       => SecureRandom.hex(32), # Unpredictable, 256bit randomly signed session cookies.
 	:httponly     => true,              # bad js! No cookies for you!
-	:secure       => false,             # change for more secure cookies
+	:secure       => true,             # Send session cookies over SSL or risk the firesheep!
 	:path         => '/'
 
 if production? # production config / requires
