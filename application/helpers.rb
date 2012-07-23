@@ -1,9 +1,6 @@
-# ===========
 # = Helpers =
-# ===========
 helpers do
   # helpers
-  include Rack::Utils
   include Sprockets::Helpers
   
   alias_method :h, :escape_html
@@ -20,9 +17,11 @@ helpers do
   #   erb :"partials/flash"
   # 
   # which is just weird and ugly.
+  # 
+  # also, defaults to not use a layout file when the request is made of XHR
   def erb(template, options = {}, locals = {})
     template = template.to_sym
-    options[:layout] = options[:layout].present? ? options[:layout] : !request.xhr?
+    options[:layout] = (options[:layout].present? || options[:layout] == false) ? options[:layout] : !request.xhr?
     
     super
   end
@@ -36,9 +35,9 @@ helpers do
   #   <%= link_to 'Home', '/', :class => 'home-link', :title => 'Click here to go home', :data => { :to => '#home' } %>
   #
   def link_to(text, link, attributes = {})
-		if link == (request.url.include?('?') ? "#{ request.path_info }?#{ request.query_string }" : request.path_info)
-			attributes[:class] = "#{ attributes[:class] } current"
-		end
+    if link == (request.url.include?('?') ? "#{ request.path_info }?#{ request.query_string }" : request.path_info)
+      attributes[:class] = "#{ attributes[:class] } current"
+    end
     
     attributes.merge!({ :href => link })
     
@@ -90,15 +89,6 @@ helpers do
     else
       request.cookies[name]
     end
-  end
-
-  # really simple, easily cracked (and totally insecure { did I mention this is patchy? }) string obfuscator
-  def encode(plain_text)
-    Base64.urlsafe_encode64(plain_text)
-  end
-  # de-fuscator
-  def decode(encoded_text)
-    Base64.urlsafe_decode64(encoded_text)
   end
 
   # checks the params hash for a single argument as both !nil and !empty

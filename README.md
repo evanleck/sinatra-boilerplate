@@ -29,16 +29,16 @@ For example, let's say you're like everybody else who hasn't been living under a
 
 ```html
 <head>
-	<!-- some crap... -->
-	<script>
-		Modernizr.load({
-			test: true,
-			load: ['//ajax.googleapis.com/ajax/libs/jquery/1.6.2/jquery.min.js', '/js/app.js'],
-			complete: function(){
-				log('Modernizr finished loading our scripts!');
-			}
-		});
-	</script>
+  <!-- some crap... -->
+  <script>
+    Modernizr.load({
+      test: true,
+      load: ['//ajax.googleapis.com/ajax/libs/jquery/1.6.2/jquery.min.js', '/js/app.js'],
+      complete: function(){
+        log('Modernizr finished loading our scripts!');
+      }
+    });
+  </script>
 </head>
 ```
 
@@ -52,9 +52,9 @@ $('body').addClass('RADSAUCE');
 
 ```javascript
 Modernizr.load({
-	complete: function(){
-		$('body').addClass('RADSAUCE');
-	}
+  complete: function(){
+    $('body').addClass('RADSAUCE');
+  }
 });
 ```
 
@@ -79,18 +79,18 @@ Not so great. You have to write `#content` each time you want to address that el
 
 ```scss
 #content {
-	border: 1px solid red;
-	
-	p {
-		font-size: 34em;
-		
-		&.small {
-			font-size: 12em;
-		}
-	}
-	em {
-		color: white;
-	}
+  border: 1px solid red;
+  
+  p {
+    font-size: 34em;
+    
+    &.small {
+      font-size: 12em;
+    }
+  }
+  em {
+    color: white;
+  }
 }
 ```
 
@@ -145,7 +145,7 @@ select_for 'days', { :monday => 'Monday', :myday => 'MY DAY!' }
 
 # yields
 # <select name='days' id='days' size='1'>
-# 	<option value='monday'>Monday</option>
+#   <option value='monday'>Monday</option>
 #     <option value='myday'>MY DAY!</option>
 # </select>
 ```

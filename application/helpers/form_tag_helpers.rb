@@ -15,12 +15,12 @@ module Sinatra
     # 
     def input_for(param, attributes = {})
       # default values when not specified.
-    	attributes = {
-    		:type  => 'text', # can be any HTML input type ('email', 'submit', 'password', etc.)
-    		:value => h(params[param.to_sym]) || '',
-    		:name  => param,
-    		:id    => attributes[:id] || param
-    	}.merge(attributes)
+      attributes = {
+        :type  => 'text', # can be any HTML input type ('email', 'submit', 'password', etc.)
+        :value => h(params[param.to_sym]) || '',
+        :name  => param,
+        :id    => attributes[:id] || param
+      }.merge(attributes)
 
       "<input #{ attributes.to_attr }>"
     end
