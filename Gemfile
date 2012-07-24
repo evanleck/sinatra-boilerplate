@@ -3,11 +3,20 @@
 # source (there are others but whatever)
 source :rubygems
 
+# session store
+gem 'dalli', require: 'rack/session/dalli'
+gem 'kgio'
+
 # server
-gem 'thin'
+gem 'unicorn'
+
+# development
+gem 'foreman'
 
 # rack
 gem 'rack'
+gem 'rack-contrib', require: 'rack/contrib'
+gem 'rack-protection', require: 'rack/protection'
 
 # sinatra
 gem 'sinatra'
@@ -16,15 +25,15 @@ gem 'sinatra-flash', require: 'sinatra/flash' # enables flash[:notice] && flash[
 # faster better stronger
 gem 'erubis'
 
-# asset stuff
-gem 'coffee-script'   # build the JS
-gem 'compass'         # build the CSS
+# email
+gem 'pony'
+
+# assets
+gem 'sass'
+gem 'compass'
+gem 'coffee-script'
 
 # sprockets galore
 gem 'sprockets'
 gem 'sprockets-sass'
 gem 'sprockets-helpers'
-
-group :production do
-  gem 'pony'
-end

@@ -1,2 +1,5 @@
-# we don't want the Gemfile.lock particularly
+
 Gemfile.lock
+node_modules
+.sass-cache
+unicorn.pid
