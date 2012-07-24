@@ -3,6 +3,11 @@ Dir.glob('./application/**/*.rb') do |file|
   require file
 end
 
+before do
+  # opt into the future
+  response['X-UA-Compatible'] = "IE=edge,chrome=1"
+end
+
 get '/' do
   @title = 'Hey there!'
 

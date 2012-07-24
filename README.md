@@ -2,6 +2,14 @@
 
 A great place to start with [Sinatra](http://www.sinatrarb.com/), [HTML5 Boilerplate](http://html5boilerplate.com/), [Compass](http://compass-style.org/), [CoffeeScript](http://coffeescript.org/) and [Sprockets (aka the asset pipeline)](https://github.com/sstephenson/sprockets) all cooked together.
 
+## TL;DR: Get me up and running
+
+1. Grab the code and `bundle` the gems.
+2. Make sure you have [memcached](http://www.memcached.org/) installed.
+3. Run `rake s` to start the development server.
+
+# What's in the Box
+
 ## HTML5 Boilerplate
 
 sinatra-boilerplate uses *some* of the utter uber-hawtness that is the [HTML5 Boilerplate](http://html5boilerplate.com/) but *not all*. I opted not to use the build script stuff because I feel like it adds an extra layer of trouble when working with Sinatra.
@@ -172,17 +180,13 @@ I've added a bunch of modules and helper functions that I use all the time to th
 
 You like it? **Awesome!** Here's how to use it:
 
-1. Hit the download link at the top of the page.
-2. Start hacking.
+1. Download the sauce (either through git or the download button).
+2. `bundle`
+3. Make sure you have [memcached](http://www.memcached.org/) installed.
+4. Run `rake s` from the directory of the sauce.
+5. Profit!
 
-Or if you want the more Git-y way:
-
-1. Clone this project: `git clone git://github.com/l3ck/sinatra-boilerplate.git sinatra-boilerplate`
-2. `CD` into the clone: `cd sinatra-boilerplate`
-3. Export a clean version: `git checkout-index --prefix=git-export-dir/ -a`
-4. Move the newly created folder `git-export-dir` out of
-   `sinatra-boilerplate` with some meaningfulish name.
-6. Start hacking! Your boilerplate is in that directory!
+If you have suggestions or think I goofed please let me know or send a pull request.
 
 ## Acknowledgements
 
