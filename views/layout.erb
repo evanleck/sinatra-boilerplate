@@ -5,16 +5,12 @@
 <!--[if IE 8]>    <html class="no-js ie8 oldie" lang="en"> <![endif]-->
 <!-- Consider adding a manifest.appcache: h5bp.com/d/Offline -->
 <!--[if gt IE 8]><!--> <html class="no-js" lang="en"> <!--<![endif]-->
-<head>
-  <meta charset="utf-8">
+  <head>
+    <meta charset="utf-8">
+    <link rel="shortcut icon" href="<%= image_path('favicon.ico') %>">
     <title><%= @title %></title>
     <meta name="description" content="">
-    <meta name="author" content="">
-    <!-- Mobile viewport optimized: j.mp/bplateviewport -->
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-    <!-- Place favicon.ico and apple-touch-icon.png in the root directory: mathiasbynens.be/notes/touch-icons -->
-
+    <meta name="viewport" content="width=device-width">
     <link rel="stylesheet" href="<%= stylesheet_path('style') %>" media="all">
 
     <!-- More ideas for your <head> here: h5bp.com/docs/#head-Tips -->
@@ -23,19 +19,12 @@
       For optimal performance, use a custom Modernizr build: www.modernizr.com/download/
       For Modernizr.load to work, check the box for it on the build page
     -->
-    <!-- for more on Modernizr.load, check out http://yepnopejs.com/, that's what it is -->
     <script src="<%= javascript_path('modernizr') %>"></script>
-    <script>
-      Modernizr.load({
-        test: true,
-        load: ['//ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js', '<%= javascript_path('app') %>'],
-        complete: function(){
-          log('Modernizr finished loading our scripts!');
-        }
-      });
-    </script>
   </head>
   <body>
+    <!--[if lt IE 7]>
+      <p class="chromeframe">You are using an outdated browser. <a href="http://browsehappy.com/">Upgrade your browser today</a> or <a href="http://www.google.com/chromeframe/?redirect=true">install Google Chrome Frame</a> to better experience this site.</p>
+    <![endif]-->
     <div class="container">
       <header>
         <h1>Hey There!</h1>
@@ -56,20 +45,15 @@
       </footer>
     </div> <!-- .container -->
 
-    <!-- mathiasbynens.be/notes/async-analytics-snippet Change UA-XXXXX-X to be your site's ID -->
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.8.0/jquery.min.js"></script>
+    <script src="<%= javascript_path('app') %>"></script>
+
+    <!-- Google Analytics: change UA-XXXXX-X to be your site's ID. -->
     <script>
       var _gaq=[['_setAccount','UA-XXXXX-X'],['_trackPageview'],['_trackPageLoadTime']];
       (function(d,t){var g=d.createElement(t),s=d.getElementsByTagName(t)[0];g.async=1;
       g.src=('https:'==location.protocol?'//ssl':'//www')+'.google-analytics.com/ga.js';
       s.parentNode.insertBefore(g,s)}(document,'script'));
     </script>
-
-
-    <!-- Prompt IE 6 users to install Chrome Frame. Remove this if you want to support IE 6.
-         chromium.org/developers/how-tos/chrome-frame-getting-started -->
-    <!--[if lt IE 7 ]>
-      <script defer src="//ajax.googleapis.com/ajax/libs/chrome-frame/1.0.3/CFInstall.min.js"></script>
-      <script defer>window.attachEvent('onload',function(){CFInstall.check({mode:'overlay'})})</script>
-    <![endif]-->
   </body>
 </html>

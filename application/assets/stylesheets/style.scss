@@ -1,6 +1,7 @@
 // To configure blueprint, edit the partials/_base.scss file.
-@import "partials/base";
+@import "partials/normalize";
 @import "partials/boilerplate";
+@import "partials/base";
 @import "partials/layout";
 
 /* Drop your styles in here! */

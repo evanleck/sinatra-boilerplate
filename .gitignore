@@ -3,3 +3,4 @@ Gemfile.lock
 node_modules
 .sass-cache
 unicorn.pid
+public/assets/*

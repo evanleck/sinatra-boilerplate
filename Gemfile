@@ -29,7 +29,7 @@ gem 'erubis'
 gem 'pony'
 
 # assets
-gem 'sass'
+gem 'sass', '~>3.1.0'
 gem 'compass'
 gem 'coffee-script'
 

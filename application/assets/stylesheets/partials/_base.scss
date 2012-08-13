@@ -15,6 +15,8 @@ $blueprint-grid-width: ($blueprint-container-size + $blueprint-grid-margin) / $b
 
 body {
   @include blueprint-utilities;
+
+  font-size: 14px;
 }
 
 form {

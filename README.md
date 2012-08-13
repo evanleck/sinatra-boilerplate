@@ -14,15 +14,14 @@ A great place to start with [Sinatra](http://www.sinatrarb.com/), [HTML5 Boilerp
 
 sinatra-boilerplate uses *some* of the utter uber-hawtness that is the [HTML5 Boilerplate](http://html5boilerplate.com/) but *not all*. I opted not to use the build script stuff because I feel like it adds an extra layer of trouble when working with Sinatra.
 
-The base layout file is pretty compliant with what the Boilerplate puts out but I've added in `Modernizr.load` instead of putting all the JS at the bottom and a few other minor tweaks. Most of the comments have been left in place though.
+The base layout file is pretty compliant with what the Boilerplate puts out except for a few minor tweaks. Most of the comments have been left in place as well.
 
 Direct implementations from HTML5BP:
 
 * `html` scoping by class.
-* Internet explorer compatibility `meta` tag.
 * Viewport settings for mobile browsers.
 * Better analytics script.
-* Prompt IE6 users to use Chrome Frame.
+* More awesome CSS base.
 * ... probably more that I've forgotten :)
 
 ## Modernizr
@@ -31,44 +30,7 @@ Direct implementations from HTML5BP:
 
 ## Modernizr.load
 
-I also use `Modernizr.load` a **ton** and recommend you checkout [yepnope.js](http://yepnopejs.com/) for more documentation on it (`Modernizr.load` **is** `yepnope` AFAIK). It provides asynchronous, non-blocking and conditional script loading that is IMO better than just throwing every script in the footer. The reason I like it is because you can spaghetti-code in your JS without worrying about what's loaded or not using the `complete` callback.
-
-For example, let's say you're like everybody else who hasn't been living under a JS rock and are using jQuery. Now let's say you want to execute some code on a specific page but (for whatever reason) you don't have access to the main JS source or don't want to initiate a whole other GET request for like 3 lines of code. In the `head` of your document you have `Modernizr.load` like so:
-
-```html
-<head>
-  <!-- some crap... -->
-  <script>
-    Modernizr.load({
-      test: true,
-      load: ['//ajax.googleapis.com/ajax/libs/jquery/1.6.2/jquery.min.js', '/js/app.js'],
-      complete: function(){
-        log('Modernizr finished loading our scripts!');
-      }
-    });
-  </script>
-</head>
-```
-
-Now, you're in your view file (say, the `index.erb` file in this repo) and want to execute some code like this:
-
-```javascript
-$('body').addClass('RADSAUCE');
-```
-
-**BUT WAIT!** That needs jQuery! This is where the real hot sauce for me is with `Modernizr.load` because in your view file you can throw this bad boy in:
-
-```javascript
-Modernizr.load({
-  complete: function(){
-    $('body').addClass('RADSAUCE');
-  }
-});
-```
-
-**BAM!** jQuery already got loaded because we're in the `complete` callback so we just get all crazy with our DOM manipulation without having to sweat it.
-
-[Check out the docs for even more.](http://yepnopejs.com/)
+*There's an [outstanding bug in Yepnope](https://github.com/SlexAxton/yepnope.js/issues/100) that's made `Modernizr.load` a lot less useful so I've decided to stop including it here.* Feel free to use it in your own build but I won't include it here again until that issue gets fixed.
 
 ## Compass
 
