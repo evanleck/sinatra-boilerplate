@@ -29,8 +29,7 @@ gem 'erubis'
 gem 'pony'
 
 # assets
-gem 'sass', '~>3.1.0'
-gem 'compass'
+gem 'susy'
 gem 'coffee-script'
 
 # sprockets galore

@@ -1,7 +1,10 @@
-// To configure blueprint, edit the partials/_base.scss file.
-@import "partials/normalize";
-@import "partials/boilerplate";
-@import "partials/base";
+@import 'compass';
+@import 'susy';
+
+@import 'partials/variables';
+@import 'partials/normalize';
+@import 'partials/h5bp';
+@import 'partials/base';
 @import "partials/layout";
 
 /* Drop your styles in here! */

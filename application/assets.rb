@@ -16,22 +16,22 @@ configure do
     compass.images_dir   = 'images'
     compass.output_style = :compressed
   end
-  
+
   # configure Sprockets::Helpers
   Sprockets::Helpers.configure do |config|
     config.environment = settings.sprockets
     config.prefix      = settings.assets_prefix
-    config.digest      = true
+    config.digest      = true # digests are great for cache busting
     config.manifest    = Sprockets::Manifest.new(
       settings.sprockets,
       File.join(
         File.expand_path('../../public/assets', __FILE__), 'manifest.json'
       )
     )
-    
+
     # clean that thang out
     config.manifest.clean
-    
+
     # scoop up the images so they can come along for the party
     images = Dir.glob(File.join(settings.assets_path, 'images', '**', '*')).map do |filepath|
       filepath.split('/').last

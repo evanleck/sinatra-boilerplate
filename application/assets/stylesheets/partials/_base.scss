@@ -1,24 +1,17 @@
-// Here is where you can define your constants for your application and to configure the blueprint framework.
-// Feel free to delete these if you want keep the defaults:
+/* baseline */
+@include establish-baseline;
 
-$blueprint-grid-columns: 24;
-$blueprint-container-size: 950px;
-$blueprint-grid-margin: 10px;
+/* apply a natural box layout model to all elements */
+* { @include box-sizing(border-box); }
 
-// Use this to calculate the width based on the total width.
-// Or you can set $blueprint-grid-width to a fixed value and unset $blueprint-container-size -- it will be calculated for you.
-$blueprint-grid-width: ($blueprint-container-size + $blueprint-grid-margin) / $blueprint-grid-columns - $blueprint-grid-margin;
-
-// Import all the default blueprint modules so that we can access their mixins.
-@import "blueprint";
-@import "compass";
-
+/* styyyling */
 body {
-  @include blueprint-utilities;
-
-  font-size: 14px;
-}
-
-form {
-  @include blueprint-form;
+  background: $bg-color;
+  color: $black;
+  font: {
+    family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+    weight: 400;
+  }
+  padding: 0;
+  text-rendering: optimizeLegibility;
 }

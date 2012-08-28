@@ -1,6 +1,6 @@
 /* setup your layout, columns etc. */
 footer, header {
-  @include column($blueprint-grid-columns, true);
+  @include span-columns($total-columns);
 }
 
 .container {
@@ -8,10 +8,17 @@ footer, header {
 }
 
 #main {
-  @include column($blueprint-grid-columns / 3 * 2 - 1);
-  @include colborder;
+  @include span-columns($two-thirds);
+
+  @include at-breakpoint($breakpoint) {
+    @include span-columns($total-columns);
+  }
 }
 
 #sidebar {
-  @include column($blueprint-grid-columns / 3, true);
+  @include span-columns($one-third omega);
+
+  @include at-breakpoint($breakpoint) {
+    @include span-columns($total-columns);
+  }
 }
