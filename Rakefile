@@ -4,7 +4,7 @@ task :default do
   system('rake -T')
 end
 
-desc "Start Unicorn in development mode and get memcached running"
+desc "Start Unicorn in development mode"
 task :s do
-  system("bundle exec foreman start")
+  system("unicorn -c config/unicorn.rb -E development")
 end

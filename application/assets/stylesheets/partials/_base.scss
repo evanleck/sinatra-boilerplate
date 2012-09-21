@@ -6,7 +6,7 @@
 
 /* styyyling */
 body {
-  background: $bg-color;
+  background: $bg-color image-url('llama.jpeg') no-repeat center center;
   color: $black;
   font: {
     family: "Helvetica Neue", Helvetica, Arial, sans-serif;
