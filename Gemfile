@@ -33,6 +33,6 @@ gem 'susy'
 gem 'coffee-script'
 
 # sprockets galore
-gem 'sprockets'
+gem 'sprockets', '~> 2.6.0'
 gem 'sprockets-sass'
-gem 'sprockets-helpers'
+gem 'sprockets-helpers', '~> 0.7.0'
