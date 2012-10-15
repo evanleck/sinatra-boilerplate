@@ -3,7 +3,7 @@ require 'bundler' # gem requires
 Bundler.require(:default)
 
 # core Ruby requires, modules and the main app file
-%w(securerandom timeout cgi date ./application/core).each do |requirement|
+(%w(securerandom timeout cgi date) | Dir.glob('./app/**/*.rb')).each do |requirement|
   require requirement
 end
 
@@ -33,7 +33,7 @@ set :run,             false
 set :server,          %w(unicorn)
 set :show_exceptions, false
 set :raise_errors,    development?
-set :views,           './application/views'
+set :views,           './app/views'
 set :logging,         true
 set :static,          false # your upstream server should deal with those (nginx, Apache)
 

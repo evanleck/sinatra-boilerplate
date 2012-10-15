@@ -31,6 +31,7 @@ gem 'pony'
 # assets
 gem 'susy'
 gem 'coffee-script'
+gem 'yui-compressor'
 
 # sprockets galore
 gem 'sprockets'

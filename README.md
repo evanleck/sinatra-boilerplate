@@ -50,10 +50,10 @@ Not so great. You have to write `#content` each time you want to address that el
 ```scss
 #content {
   border: 1px solid red;
-  
+
   p {
     font-size: 34em;
-    
+
     &.small {
       font-size: 12em;
     }
@@ -116,7 +116,7 @@ select_for 'days', { :monday => 'Monday', :myday => 'MY DAY!' }
 # yields
 # <select name='days' id='days' size='1'>
 #   <option value='monday'>Monday</option>
-#     <option value='myday'>MY DAY!</option>
+#   <option value='myday'>MY DAY!</option>
 # </select>
 ```
 

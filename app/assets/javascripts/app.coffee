@@ -12,4 +12,4 @@ unless window.console and console.log
 
 # woo jquery
 jQuery ($) ->
-  log "hey, the DOM is loaded!"
+  console.log "hey, the DOM is loaded!"

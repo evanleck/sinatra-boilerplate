@@ -1,5 +1,5 @@
 # sprockets setup
-set :sprockets_root,  File.expand_path('../', __FILE__)
+set :sprockets_root,  File.expand_path('../../', __FILE__)
 set :sprockets,       Sprockets::Environment.new
 set :assets_prefix,   '/assets'
 set :assets_path,     File.join(settings.sprockets_root, settings.assets_prefix)
@@ -14,7 +14,13 @@ configure do
   Compass.configuration do |compass|
     compass.project_path = settings.assets_path
     compass.images_dir   = 'images'
-    compass.output_style = :compressed
+    compass.output_style = development? ? :expanded : :compressed
+  end
+
+  # turn on JS/CSS compression on production
+  if production?
+    settings.sprockets.js_compressor  = YUI::JavaScriptCompressor.new
+    settings.sprockets.css_compressor = YUI::CssCompressor.new
   end
 
   # configure Sprockets::Helpers
@@ -25,11 +31,11 @@ configure do
     config.manifest    = Sprockets::Manifest.new(
       settings.sprockets,
       File.join(
-        File.expand_path('../../public/assets', __FILE__), 'manifest.json'
+        File.expand_path('../../../public/assets', __FILE__), 'manifest.json'
       )
     )
 
-    # clean that thang out
+    # clean that thang out (defaults to keeping 2 previous versions I believe)
     config.manifest.clean
 
     # scoop up the images so they can come along for the party
@@ -38,6 +44,7 @@ configure do
     end
 
     # note: .coffee files need to be referenced as .js for some reason
+    # note 2: in this case, we're not using Sprockets' directive processor (https://github.com/sstephenson/sprockets#the-directive-processor) but you can do that if you like.
     javascript_files = Dir.glob(File.join(settings.assets_path, 'javascripts', '**', '*')).map do |filepath|
       filepath.split('/').last.gsub(/coffee/, 'js')
     end
