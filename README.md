@@ -68,7 +68,7 @@ Wait, **what**? Yeah, you can nest it all. If you do any CSS at all in your life
 
 [Scope the docs and get crackin'.](http://compass-style.org/)
 
-## Susy
+### Susy
 
 Susy is a fantastic grid system built to be responsive and lithe. [Check out the docs here and get griddin'](http://susy.oddbird.net/)
 
