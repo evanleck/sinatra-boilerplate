@@ -68,6 +68,10 @@ Wait, **what**? Yeah, you can nest it all. If you do any CSS at all in your life
 
 [Scope the docs and get crackin'.](http://compass-style.org/)
 
+## Susy
+
+Susy is a fantastic grid system built to be responsive and lithe. [Check out the docs here and get griddin'](http://susy.oddbird.net/)
+
 
 ## Sinatra Addons
 
@@ -132,6 +136,7 @@ I've added a bunch of modules and helper functions that I use all the time to th
 
 * **SPROCKETS**
   * holy crap that's nice!!
+  * and yeah, it pre-compiles your assets so nginx (or Apache or whatever) can serve them up _super_ fast
 * **core extensions**
   * extended Hash class with some useful methods for the web
 * **Sinatra extensions**
