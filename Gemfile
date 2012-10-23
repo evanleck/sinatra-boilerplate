@@ -10,9 +10,6 @@ gem 'kgio'
 # server
 gem 'unicorn'
 
-# development
-gem 'foreman'
-
 # rack
 gem 'rack'
 gem 'rack-contrib', :require => 'rack/contrib'

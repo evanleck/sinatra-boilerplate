@@ -2,11 +2,15 @@
 
 A great place to start with [Sinatra](http://www.sinatrarb.com/), [HTML5 Boilerplate](http://html5boilerplate.com/), [Compass](http://compass-style.org/), [CoffeeScript](http://coffeescript.org/) and [Sprockets (aka the asset pipeline)](https://github.com/sstephenson/sprockets) all cooked together.
 
+
+
 ## TL;DR: Get me up and running
 
 1. Grab the code and `bundle` the gems.
 2. Make sure you have [memcached](http://www.memcached.org/) installed.
 3. Run `rake s` to start the development server.
+
+
 
 # What's in the Box
 
@@ -24,13 +28,19 @@ Direct implementations from HTML5BP:
 * More awesome CSS base.
 * ... probably more that I've forgotten :)
 
+
+
 ## Modernizr
 
 [Modernizr](http://www.modernizr.com/) is fantastic and I threw it in because... well, it's fantastic!
 
+
+
 ## Modernizr.load
 
 *There's an [outstanding bug in Yepnope](https://github.com/SlexAxton/yepnope.js/issues/100) that's made `Modernizr.load` a lot less useful so I've decided to stop including it here.* Feel free to use it in your own build but I won't include it here again until that issue gets fixed.
+
+
 
 ## Compass
 
@@ -73,6 +83,7 @@ Wait, **what**? Yeah, you can nest it all. If you do any CSS at all in your life
 Susy is a fantastic grid system built to be responsive and lithe. [Check out the docs here and get griddin'](http://susy.oddbird.net/)
 
 
+
 ## Sinatra Addons
 
 ### Run Later
@@ -95,13 +106,6 @@ get '/' do
   "Hello World"
 end
 ```
-
-
-
-
-
-
-
 
 ### Form Tag Helpers
 
@@ -126,10 +130,6 @@ select_for 'days', { :monday => 'Monday', :myday => 'MY DAY!' }
 
 
 
-
-
-
-
 ## Extra Hawt Sauce
 
 I've added a bunch of modules and helper functions that I use all the time to this to (hopefully) make your life easier when you're getting your app first setup. Some of the helpers methods I've added include:
@@ -143,17 +143,27 @@ I've added a bunch of modules and helper functions that I use all the time to th
   * a better `erb` method so you don't have to do crap like `erb :"folder/file"` anymore
 
 
+
+## Server Goodies
+
+* **nginx configuration** - all based on H5BP and a simple upstream setup for Unicorn.
+* **logrotate configuration** - so your logs don't get crazy.
+
+
+
 ## How to Use It
 
 You like it? **Awesome!** Here's how to use it:
 
 1. Download the sauce (either through git or the download button).
 2. `bundle`
-3. Make sure you have [memcached](http://www.memcached.org/) installed.
+3. Make sure you have [memcached](http://www.memcached.org/) installed and running (`memcached -d`).
 4. Run `rake s` from the directory of the sauce.
 5. Profit!
 
 If you have suggestions or think I goofed please let me know or send a pull request.
+
+
 
 ## Acknowledgements
 

@@ -62,14 +62,15 @@ before_fork do |server, worker|
   # # thundering herd (especially in the "preload_app false" case)
   # # when doing a transparent upgrade.  The last worker spawned
   # # will then kill off the old master process with a SIGQUIT.
-  # old_pid = "#{server.config[:pid]}.oldbin"
-  # if old_pid != server.pid
-  #   begin
-  #     sig = (worker.nr + 1) >= server.worker_processes ? :QUIT : :TTOU
-  #     Process.kill(sig, File.read(old_pid).to_i)
-  #   rescue Errno::ENOENT, Errno::ESRCH
-  #   end
-  # end
+  old_pid = "#{server.config[:pid]}.oldbin"
+
+  if old_pid != server.pid
+    begin
+      sig = (worker.nr + 1) >= server.worker_processes ? :QUIT : :TTOU
+      Process.kill(sig, File.read(old_pid).to_i)
+    rescue Errno::ENOENT, Errno::ESRCH
+    end
+  end
   #
   # Throttle the master from forking too quickly by sleeping.  Due
   # to the implementation of standard Unix signal handlers, this
