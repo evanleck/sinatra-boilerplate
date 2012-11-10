@@ -23,19 +23,6 @@ use Rack::Deflect,            # prevents DOS attacks https://github.com/rack/rac
   :request_threshold => 100,  # number of requests
   :interval => 5,             # number of seconds to watch for :request_threshold
   :block_duration => 600      # number of seconds to block after :request_threshold has been hit
-use Rack::CommonLogger
-use Rack::Protection::SessionHijacking  # records a few pieces of browser info and stores in session
-use Rack::Protection::IPSpoofing        # checks & protects against forwarded-for madness
-use Rack::Protection::PathTraversal     # prevents path traversal
-
-# = Configuration =
-set :run,             false
-set :server,          %w(unicorn)
-set :show_exceptions, false
-set :raise_errors,    development?
-set :views,           './app/views'
-set :logging,         true
-set :static,          false # your upstream server should deal with those (nginx, Apache)
 
 #
 # . . . . . . . . . . . . . . . . _,,,--~~~~~~~~--,_

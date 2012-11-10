@@ -13,11 +13,11 @@ gem 'unicorn'
 # rack
 gem 'rack'
 gem 'rack-contrib', :require => 'rack/contrib'
-gem 'rack-protection', :require => 'rack/protection'
 
 # sinatra
 gem 'sinatra'
 gem 'sinatra-flash', :require => 'sinatra/flash' # enables flash[:notice] && flash[:error]
+gem 'sinatra-contrib', :require => ['sinatra/namespace', 'sinatra/content_for']
 
 # faster better stronger
 gem 'erubis'
@@ -27,8 +27,8 @@ gem 'pony'
 
 # assets
 gem 'susy'
+gem 'uglifier'
 gem 'coffee-script'
-gem 'yui-compressor'
 
 # sprockets galore
 gem 'sprockets'

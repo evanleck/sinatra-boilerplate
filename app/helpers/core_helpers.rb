@@ -22,7 +22,15 @@ helpers do
   # also, defaults to not use a layout file when the request is made of XHR
   def erb(template, options = {}, locals = {})
     template = template.to_sym
-    options[:layout] = (options[:layout].present? || options[:layout] == false) ? options[:layout] : !request.xhr?
+
+    # figure out the layout
+    if options[:layout].is_a?(FalseClass)
+      # we're fine
+    elsif options[:layout].present?
+      options[:layout] = options[:layout].to_sym
+    else
+      options[:layout] = !request.xhr?
+    end
 
     super
   end
@@ -36,11 +44,11 @@ helpers do
   #   <%= link_to 'Home', '/', :class => 'home-link', :title => 'Click here to go home', :data => { :to => '#home' } %>
   #
   def link_to(text, link, attributes = {})
-    if link == (request.url.include?('?') ? "#{ request.path_info }?#{ request.query_string }" : request.path_info)
+    if link == request.path_info
       attributes[:class] = "#{ attributes[:class] } current"
     end
 
-    attributes.merge!({ :href => link })
+    attributes.merge!({ :href => to(link) })
 
     "<a #{ attributes.to_attr }>#{ text }</a>"
   end
@@ -106,17 +114,5 @@ helpers do
 
       throw(:truthy, true)
     }
-  end
-
-  # debug log to server log if development
-  # else outputs nothing (for production)
-  def dlog(*args)
-    if development?
-      $stdout.puts "\n================================================\n"
-      for arg in args
-        $stdout.puts arg
-        $stdout.puts "================================================\n"
-      end
-    end
   end
 end
