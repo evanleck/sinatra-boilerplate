@@ -1,7 +1,4 @@
 configure do
-  # App root
-  set :app_root,        File.expand_path('../../../', __FILE__)
-
   # = Configuration =
   set :run,             false
   set :server,          %w(unicorn)

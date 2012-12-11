@@ -2,8 +2,16 @@
 require 'bundler' # gem requires
 Bundler.require(:default)
 
-# core Ruby requires, modules and the main app file
-(%w(securerandom timeout cgi date) | Dir.glob('./app/**/*.rb')).each do |requirement|
+# App root configure for everyone else
+configure do
+  set :app_root, File.expand_path('../', __FILE__)
+end
+
+# core Ruby requires and app files
+core_requires = %w(securerandom timeout cgi date)
+app_files     = Dir.glob('./app/**/*.rb').sort
+
+(core_requires | app_files).each do |requirement|
   require requirement
 end
 

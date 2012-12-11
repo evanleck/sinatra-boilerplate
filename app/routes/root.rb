@@ -9,6 +9,6 @@ namespace '/' do
       logger.info "\nLengthy process has finished!\n\n" # outputs to the log AFTER the page has rendered because run_later doesn't block the rest of the process :)
     end
 
-    erb :index
+    erb 'index'
   end
 end

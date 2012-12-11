@@ -1,5 +1,3 @@
-require './app/config/settings'
-
 configure do
   # sprockets setup
   set :sprockets,     Sprockets::Environment.new(settings.app_root)
