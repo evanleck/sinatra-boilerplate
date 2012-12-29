@@ -24,7 +24,7 @@ namespace :unicorn do
   desc "Stop Unicorn"
   task :stop do
     if unicorn_pid
-      puts "Unicorn killed" if system("kill -s QUIT #{ unicorn_pid }")
+      puts "Unicorn killed (womp womp)" if system("kill -s QUIT #{ unicorn_pid }")
     else
       puts "No Unicorn to kill"
     end
