@@ -28,6 +28,7 @@ if development
   listen 4567, :tcp_nopush => true
 else
   listen socket_path, :backlog => 64
+  check_client_connection true
 end
 
 
@@ -47,7 +48,8 @@ end
 
 # combine Ruby 2.0.0dev or REE with "preload_app true" for memory savings
 # http://rubyenterpriseedition.com/faq.html#adapt_apps_for_cow
-preload_app false
+# preload
+preload_app true
 
 GC.respond_to?(:copy_on_write_friendly=) and
   GC.copy_on_write_friendly = true
