@@ -1,36 +1,40 @@
 # = Gemfile containing requirements for this app =
 #     see http://gembundler.com/ for more on how to use this file
 # source (there are others but whatever)
-source :rubygems
+source 'https://rubygems.org'
 
 # session store
-gem 'dalli', :require => 'rack/session/dalli'
-gem 'kgio'
+group :memcached do
+  gem 'dalli', :require => 'rack/session/dalli'
+  gem 'kgio'
+end
 
 # server
 gem 'unicorn'
 
-# rack
-gem 'rack'
-gem 'rack-contrib', :require => 'rack/contrib'
-
 # sinatra
-gem 'sinatra'
-gem 'sinatra-flash', :require => 'sinatra/flash' # enables flash[:notice] && flash[:error]
-gem 'sinatra-contrib', :require => ['sinatra/namespace', 'sinatra/content_for']
+group :sinatra do
+  gem 'sinatra'
+  gem 'sinatra-flash', :require => 'sinatra/flash'
+  gem 'sinatra-contrib', :require => ['sinatra/namespace', 'sinatra/content_for']
+end
 
-# faster better stronger
-gem 'erubis'
-
-# email
-gem 'pony'
+group :assorted do
+  gem 'pony' # email
+  gem 'erubis' # faster better stronger
+  gem 'escape_utils', :require => %w(escape_utils escape_utils/html/erb escape_utils/html/rack escape_utils/url/erb escape_utils/url/rack escape_utils/url/uri)
+end
 
 # assets
-gem 'susy'
-gem 'uglifier'
-gem 'coffee-script'
+group :assets do
+  gem 'susy'
+  gem 'coffee-script'
+end
 
 # sprockets galore
-gem 'sprockets'
-gem 'sprockets-sass'
-gem 'sprockets-helpers'
+group :sprockets do
+  gem 'uglifier'
+  gem 'sprockets'
+  gem 'sprockets-sass'
+  gem 'sprockets-helpers'
+end
