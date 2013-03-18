@@ -1,1 +1,0 @@
-fire `touch tmp/restart.txt` from within your app directory to restart the server
