@@ -136,7 +136,7 @@ I've added a bunch of modules and helper functions that I use all the time to th
 
 * **SPROCKETS**
   * holy crap that's nice!!
-  * and yeah, it pre-compiles your assets so nginx (or Apache or whatever) can serve them up _super_ fast
+  * there's a Rake task that pre-compiles your assets so nginx (or Apache or whatever) can serve them up _super_ fast too!
 * **core extensions**
   * extended Hash class with some useful methods for the web
 * **Sinatra extensions**
