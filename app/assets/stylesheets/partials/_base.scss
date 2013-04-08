@@ -4,9 +4,10 @@
 /* apply a natural box layout model to all elements */
 * { @include box-sizing(border-box); }
 
+html, body { background: $bg-color; }
+
 /* styyyling */
 body {
-  background: $bg-color;
   color: $black;
   font: {
     family: "Helvetica Neue", Helvetica, Arial, sans-serif;

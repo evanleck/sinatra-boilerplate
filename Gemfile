@@ -15,14 +15,24 @@ gem 'unicorn'
 # sinatra
 group :sinatra do
   gem 'sinatra'
-  gem 'sinatra-flash', :require => 'sinatra/flash'
-  gem 'sinatra-contrib', :require => ['sinatra/namespace', 'sinatra/content_for']
+  gem 'sinatra-flash', :require => %w(sinatra/flash)
+  gem 'sinatra-contrib', :require => %w(
+    sinatra/namespace
+    sinatra/content_for
+  )
 end
 
 group :assorted do
   gem 'pony' # email
   gem 'erubis' # faster better stronger
-  gem 'escape_utils', :require => %w(escape_utils escape_utils/html/erb escape_utils/html/rack escape_utils/url/erb escape_utils/url/rack escape_utils/url/uri)
+  gem 'escape_utils', :require => %w(
+    escape_utils
+    escape_utils/html/erb
+    escape_utils/html/rack
+    escape_utils/url/erb
+    escape_utils/url/rack
+    escape_utils/url/uri
+  )
 end
 
 # assets
