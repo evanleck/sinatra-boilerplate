@@ -109,24 +109,7 @@ end
 
 ### Form Tag Helpers
 
-The thing I missed most in Sinatra was the glorious `input_for` kind of stuff you get with Rails, so I made some!
-
-```ruby
-# input_for
-input_for :first_name # => <input type='text' name='first_name' id='first_name' value=''>
-
-# input_for with options
-input_for :email, :type => 'email', :required => nil # => <input type='email' name='email' id='email' required value=''>
-
-# select_for
-select_for 'days', { :monday => 'Monday', :myday => 'MY DAY!' }
-
-# yields
-# <select name='days' id='days' size='1'>
-#   <option value='monday'>Monday</option>
-#   <option value='myday'>MY DAY!</option>
-# </select>
-```
+The thing I missed most in Sinatra was the glorious `input_for` kind of stuff you get with Rails, so I made some! I've included them by way of the [gem I made](https://github.com/l3ck/sinatra-tag-helpers).
 
 
 
@@ -138,7 +121,7 @@ I've added a bunch of modules and helper functions that I use all the time to th
   * holy crap that's nice!!
   * there's a Rake task that pre-compiles your assets so nginx (or Apache or whatever) can serve them up _super_ fast too!
 * **core extensions**
-  * extended Hash class with some useful methods for the web
+  * some nice stuff I stole from Rails
 * **Sinatra extensions**
   * a better `erb` method so you don't have to do crap like `erb :"folder/file"` anymore
 

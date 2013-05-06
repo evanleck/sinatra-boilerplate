@@ -12,10 +12,14 @@ end
 # server
 gem 'unicorn'
 
+# opt into the future
+gem 'rack-compatible'
+
 # sinatra
 group :sinatra do
   gem 'sinatra'
   gem 'sinatra-flash', :require => %w(sinatra/flash)
+  gem 'sinatra-tag-helpers', :require => %w(sinatra/tag-helpers)
   gem 'sinatra-contrib', :require => %w(
     sinatra/namespace
     sinatra/content_for

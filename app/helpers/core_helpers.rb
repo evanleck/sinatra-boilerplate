@@ -3,11 +3,6 @@ helpers do
   # gives us asset_path helpers
   include Sprockets::Helpers
 
-  # simple enough
-  alias_method :h, :escape_html
-  alias_method :e, :escape
-
-
   # overrides Sinatra's defaults to allow calling like this:
   #   erb 'partials/flash'
   #
@@ -33,24 +28,6 @@ helpers do
     end
 
     super
-  end
-
-  # link helper
-  #
-  #   <%= link_to 'click here to get awesome hawtness', '/hawtness' %>
-  #
-  # with HTML attributes:
-  #
-  #   <%= link_to 'Home', '/', :class => 'home-link', :title => 'Click here to go home', :data => { :to => '#home' } %>
-  #
-  def link_to(text, link, attributes = {})
-    if link == request.path_info
-      attributes[:class] = "#{ attributes[:class] } current"
-    end
-
-    attributes.merge!({ :href => to(link) })
-
-    "<a #{ attributes.to_attr }>#{ text }</a>"
   end
 
   # Returns the url of the referer along with the params posted to that page
