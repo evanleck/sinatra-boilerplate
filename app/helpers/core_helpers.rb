@@ -30,29 +30,6 @@ helpers do
     super
   end
 
-  # Returns the url of the referer along with the params posted to that page
-  #   Lets you hand back invalid params for correction in the previous page.
-  #   You can also add extra params in to send back.
-  #
-  #   redirect to(back_with_params(:my_extra_param => 'my extra value'))
-  #
-  def back_with_params(o = {})
-    rejected_keys = [:password] # these won't be passed back to the page
-    back_to = request.referer ? request.referer : '/'
-    params_string = params.blank? ? '' : "?#{ build_query(o.merge(params).delete_if { |k, v| rejected_keys.include?(k.to_sym) }) }"
-
-    back_to + params_string
-  end
-
-  # Handles an unruly `back` method call with an alternate route
-  def back_or(new_path)
-    if back == '/' || back == request.path_info
-      new_path
-    else
-      back
-    end
-  end
-
   # Cookie getter / setter
   #
   # Setter (sets the 'my-cookie' cookie to 'this here is a value'):

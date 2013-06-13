@@ -9,17 +9,12 @@ group :memcached do
   gem 'kgio'
 end
 
-# server
-gem 'unicorn'
-
-# opt into the future
-gem 'rack-compatible'
-
 # sinatra
 group :sinatra do
   gem 'sinatra'
   gem 'sinatra-flash', :require => %w(sinatra/flash)
   gem 'sinatra-tag-helpers', :require => %w(sinatra/tag-helpers)
+  gem 'sinatra-routing-helpers', :require => %w(sinatra/routing-helpers)
   gem 'sinatra-contrib', :require => %w(
     sinatra/namespace
     sinatra/content_for
@@ -27,6 +22,8 @@ group :sinatra do
 end
 
 group :assorted do
+  gem 'unicorn' # server
+  gem 'rack-compatible' # opt into the future
   gem 'pony' # email
   gem 'erubis' # faster better stronger
   gem 'escape_utils', :require => %w(
