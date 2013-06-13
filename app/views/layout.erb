@@ -36,7 +36,15 @@
       </footer>
     </div> <!-- .container -->
 
-    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+    <!-- JavaScripts and such -->
+    <!-- this is the best solution I've found for using jQuery 2 when possible -->
+    <!-- sauce: http://blog.jquery.com/2013/03/01/jquery-2-0-beta-2-released/ -->
+    <!--[if lt IE 9]>
+      <script src='//ajax.googleapis.com/ajax/libs/jquery/1.10.1/jquery.min.js'></script>
+    <![endif]-->
+    <!--[if gte IE 9]><!-->
+      <script src='//ajax.googleapis.com/ajax/libs/jquery/2.0.2/jquery.min.js'></script>
+    <!--<![endif]-->
     <script src="<%= javascript_path('app') %>"></script>
 
     <!-- Google Analytics: change UA-XXXXX-X to be your site's ID. -->
