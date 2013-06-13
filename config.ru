@@ -29,6 +29,9 @@ app_files     = Dir.glob('./app/**/*.rb').sort
 end
 
 # = Middleware =
+# set X-UA-Compatible appropriately
+use Rack::Compatible
+
 # Pop open IRB and run `require 'securerandom'; SecureRandom.hex(32)`
 #   to generate an unpredictable, 256bit randomly signed session cookies.
 #   throw that value in the "secret" key below
