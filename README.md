@@ -34,7 +34,7 @@ Susy is a fantastic grid system built to be responsive and lithe. [Check out the
 The thing I missed most in Sinatra was the glorious `input_for` kind of stuff you get with Rails, so I made some! I've included them by way of the [gem I made, 'sinatra-tag-helpers'](https://github.com/l3ck/sinatra-tag-helpers).
 
 ### Routing Helpers
-Some simple routing helpers I end up using a lot with Sinatra. Methods like:
+Some [simple routing helpers](https://github.com/l3ck/sinatra-routing-helpers) I end up using a lot with Sinatra. Methods like:
 * `is_page?`
 * `url_with_params`
 * `back_with_params`
