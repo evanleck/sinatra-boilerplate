@@ -5,7 +5,12 @@
 <!--[if gt IE 8]><!--> <html class="no-js"> <!--<![endif]-->
   <head>
     <meta charset="utf-8">
-    <link rel="shortcut icon" href="<%= image_path('favicon.ico') %>">
+    <!-- use ALLL the icons! -->
+    <link rel='shortcut icon' href='<%= image_path('favicon.ico') %>'>
+    <link rel="apple-touch-icon" href="<%= image_path('apple-touch-icon.png') %>">
+    <link rel="apple-touch-icon" sizes="72x72" href="<%= image_path('apple-touch-icon-72x72-precomposed.png') %>">
+    <link rel="apple-touch-icon" sizes="114x114" href="<%= image_path('apple-touch-icon-114x114-precomposed.png') %>">
+    <link rel="apple-touch-icon" sizes="144x144" href="<%= image_path('apple-touch-icon-144x144-precomposed.png') %>">
     <title><%= @title %></title>
     <meta name="description" content="">
     <meta name="viewport" content="width=device-width">
