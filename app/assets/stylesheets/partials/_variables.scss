@@ -12,6 +12,19 @@ $from-direction:    left;
 $omega-float:       $from-direction;
 
 
+$susy: (
+  // the basics
+  columns: $total-columns,
+  gutters: $gutter-width / $column-width,
+  column-width: $column-width,
+
+  // advanced
+  // container: $container-width,
+  flow: if($from-direction == right, rtl, ltr),
+  last-flow: if($omega-float == $from-direction, from, to),
+);
+
+
 /* column shortcuts */
 $one-third:   $total-columns / 3;
 $two-thirds:  $one-third * 2;

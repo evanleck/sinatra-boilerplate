@@ -38,6 +38,8 @@ end
 
 # assets
 group :assets do
+  gem 'compass'
+  gem 'breakpoint'
   gem 'susy'
   gem 'coffee-script'
 end

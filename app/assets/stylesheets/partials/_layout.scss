@@ -1,6 +1,6 @@
 /* setup your layout, columns etc. */
 footer, header {
-  @include span-columns($total-columns);
+  @include span($total-columns);
 }
 
 .container {
@@ -8,17 +8,17 @@ footer, header {
 }
 
 #main {
-  @include span-columns($two-thirds);
+  @include span($two-thirds);
 
-  @include at-breakpoint($breakpoint) {
-    @include span-columns($total-columns);
+  @include susy-breakpoint($breakpoint, 12) {
+    @include span($total-columns);
   }
 }
 
 #sidebar {
-  @include span-columns($one-third omega);
+  @include span($one-third omega);
 
-  @include at-breakpoint($breakpoint) {
-    @include span-columns($total-columns);
+  @include susy-breakpoint($breakpoint, 12) {
+    @include span($total-columns);
   }
 }
