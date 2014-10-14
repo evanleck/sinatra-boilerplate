@@ -59,14 +59,13 @@ helpers do
     params[arg.to_sym].present?
   end
 
-  # checks an array of params from the params hash
-  def ensure_params(*args)
-    return catch(:truthy) {
-      args.each do |arg|
-        throw(:truthy, false) unless ensure_param(arg)
-      end
+  # takes an array and checks to see if ANY of those params are there
+  def any_params(like_to_see)
+    like_to_see.any?(&method(:ensure_param))
+  end
 
-      throw(:truthy, true)
-    }
+  # checks an array of params from the params hash
+  def ensure_params(necessary_params)
+    necessary_params.all?(&method(:ensure_param))
   end
 end
