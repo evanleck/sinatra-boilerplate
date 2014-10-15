@@ -1,6 +1,5 @@
-namespace '/' do
-  before { @title = 'Hey there!' }
-  get do
+require 'sinatra'
+
+get '/' do
     erb 'index'
-  end
 end

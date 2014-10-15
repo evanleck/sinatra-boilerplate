@@ -51,3 +51,7 @@ group :sprockets do
   gem 'sprockets-sass'
   gem 'sprockets-helpers'
 end
+
+group :test do
+  gem 'rspec'
+end
